@@ -23,64 +23,49 @@
   <link rel="stylesheet" href="styles.css">
 
   <style>
-    /* Clean Apple Neutral Overrides */
+    /* Minimalist Monochrome (Linear / Vercel style) */
     :root {
-      --apple-blue: #0071E3;
-      --apple-blue-hover: #0077ED;
-      --apple-blue-subtle: #E8F2FD;
-      --apple-dark: #1D1D1F;
-      --apple-gray: #86868B;
-      --apple-light: #F5F5F7;
-      --apple-border: #E5E5EA;
+      --mono-black: #000000;
+      --mono-hover: #262626;
+      --mono-subtle: #F5F5F5;
+      --mono-border: #E5E5E5;
+      --mono-text-muted: #737373;
     }
 
-    .text-teal, .text-primary-apple { color: var(--apple-blue) !important; }
-    .bg-teal, .bg-primary-apple { background-color: var(--apple-blue) !important; color: #ffffff !important; }
-    .bg-teal-subtle { background-color: var(--apple-blue-subtle) !important; color: var(--apple-blue) !important; }
+    .text-teal, .text-primary-mono { color: #000000 !important; }
+    .bg-teal, .bg-primary-mono { background-color: #000000 !important; color: #ffffff !important; }
+    .bg-teal-subtle { background-color: #F5F5F5 !important; color: #171717 !important; border: 1px solid #E5E5E5; }
     
-    /* Apple Pill Buttons */
-    .btn-teal, .btn-amber, .btn-apple-primary {
-      background-color: var(--apple-blue) !important;
-      border: 1px solid var(--apple-blue) !important;
+    /* Monochrome Crisp Buttons */
+    .btn-teal, .btn-amber, .btn-primary {
+      background-color: #000000 !important;
+      border: 1px solid #000000 !important;
       color: #ffffff !important;
       font-weight: 500 !important;
       border-radius: 980px !important;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08) !important;
+      transition: all 0.15s ease !important;
     }
-    .btn-teal:hover, .btn-amber:hover, .btn-apple-primary:hover {
-      background-color: var(--apple-blue-hover) !important;
-      border-color: var(--apple-blue-hover) !important;
+    .btn-teal:hover, .btn-amber:hover, .btn-primary:hover {
+      background-color: #262626 !important;
+      border-color: #262626 !important;
       color: #ffffff !important;
       transform: translateY(-1px) !important;
-      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.22) !important;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12) !important;
     }
 
-    .btn-outline-teal, .btn-apple-secondary {
-      color: var(--apple-dark) !important;
-      border: 1px solid #D2D2D7 !important;
+    .btn-outline-teal, .btn-outline-secondary {
+      color: #000000 !important;
+      border: 1px solid #E5E5E5 !important;
       background-color: #FFFFFF !important;
       font-weight: 500 !important;
       border-radius: 980px !important;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      transition: all 0.15s ease !important;
     }
-    .btn-outline-teal:hover, .btn-apple-secondary:hover {
-      background-color: var(--apple-light) !important;
-      color: var(--apple-dark) !important;
-      border-color: #C7C7CC !important;
-    }
-
-    .btn-outline-secondary {
-      color: var(--apple-dark) !important;
-      border: 1px solid #D2D2D7 !important;
-      background-color: #FFFFFF !important;
-      border-radius: 980px !important;
-      font-weight: 500 !important;
-    }
-    .btn-outline-secondary:hover {
-      background-color: var(--apple-light) !important;
-      border-color: #C7C7CC !important;
-      color: var(--apple-dark) !important;
+    .btn-outline-teal:hover, .btn-outline-secondary:hover {
+      background-color: #F5F5F5 !important;
+      color: #000000 !important;
+      border-color: #D4D4D4 !important;
     }
 
     .line-clamp-2 {
@@ -103,7 +88,7 @@
           <i class="bi bi-geo-alt-fill"></i>
         </div>
         <div>
-          <span class="fs-5 fw-bold text-dark">FixMy</span><span class="fs-5 fw-bold" style="color: var(--apple-blue);">City</span>
+          <span class="fs-5 fw-bold text-dark">FixMy</span><span class="fs-5 fw-bold text-dark">City</span>
           <span class="badge bg-light text-secondary border ms-1 d-none d-sm-inline-block small" style="border-radius: 980px;">RBU Campus, Nagpur</span>
         </div>
       </a>
@@ -148,7 +133,7 @@
           </div>
           <h1 class="display-5 fw-bold text-dark tracking-tight mb-3">
             Spotted a problem in your city? <br>
-            <span style="color: var(--apple-blue);">Report it. Track it. Get it fixed.</span>
+            <span class="text-dark">Report it. Track it. Get it fixed.</span>
           </h1>
           <p class="lead text-muted mb-4 fs-6">
             Fix My City empowers students and citizens to submit municipal complaints—from hazardous potholes and broken streetlights to water leaks and garbage dumping. City departments review, dispatch field crews, and resolve tickets transparently.
