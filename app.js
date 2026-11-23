@@ -294,7 +294,7 @@ function updateMapMarkers(items) {
         <span class="badge" style="background-color: ${pinColor}; color: #fff; font-size: 11px;">${c.status.toUpperCase()}</span>
         <h6 style="margin: 6px 0 3px; font-weight: 700; font-size: 13px;">${c.title}</h6>
         <p style="margin: 0 0 6px; font-size: 11px; color: #64748B;">${c.address}</p>
-        <button onclick="trackTicket('${c.id}')" style="background: #0D9488; color: #fff; border: none; padding: 4px 10px; border-radius: 6px; font-size: 11px; cursor: pointer; width: 100%;">
+        <button onclick="trackTicket('${c.id}')" style="background: #1E3A8A; color: #fff; border: none; padding: 4px 10px; border-radius: 6px; font-size: 11px; cursor: pointer; width: 100%;">
           View Resolution Progress
         </button>
       </div>

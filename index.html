@@ -23,30 +23,70 @@
   <link rel="stylesheet" href="styles.css">
 
   <style>
-    /* Utility colors matching Figma spec */
-    .text-teal { color: #0D9488 !important; }
-    .bg-teal { background-color: #0D9488 !important; color: #fff !important; }
-    .bg-teal-subtle { background-color: #CCFBF1 !important; color: #0F766E !important; }
-    .btn-teal {
-      background-color: #0D9488;
-      border-color: #0D9488;
-      color: #ffffff;
+    /* Deep Royal Navy & Warm Amber Municipal Theme */
+    :root {
+      --fmc-primary: #1E3A8A;       /* Deep Royal Navy */
+      --fmc-primary-dark: #172554;
+      --fmc-primary-hover: #1D4ED8;
+      --fmc-primary-light: #DBEAFE;
+      --fmc-accent: #D97706;        /* Warm Amber */
+      --fmc-accent-dark: #B45309;
+      --fmc-accent-hover: #F59E0B;
+      --fmc-accent-light: #FEF3C7;
+    }
+
+    .text-teal, .text-navy { color: #1E3A8A !important; }
+    .text-amber { color: #D97706 !important; }
+    .bg-teal, .bg-navy { background-color: #1E3A8A !important; color: #ffffff !important; }
+    .bg-teal-subtle, .bg-navy-subtle { background-color: #DBEAFE !important; color: #1E3A8A !important; }
+    .bg-amber-subtle { background-color: #FEF3C7 !important; color: #92400E !important; }
+
+    /* Royal Navy Primary Action */
+    .btn-teal, .btn-navy {
+      background: linear-gradient(135deg, #1E3A8A, #1D4ED8);
+      border-color: #1E3A8A;
+      color: #ffffff !important;
       font-weight: 600;
+      box-shadow: 0 4px 10px rgba(30, 58, 138, 0.25);
+      transition: all 0.2s ease;
     }
-    .btn-teal:hover {
-      background-color: #0F766E;
-      border-color: #0F766E;
-      color: #ffffff;
+    .btn-teal:hover, .btn-navy:hover {
+      background: linear-gradient(135deg, #172554, #1E3A8A);
+      border-color: #172554;
+      color: #ffffff !important;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(30, 58, 138, 0.35);
     }
-    .btn-outline-teal {
-      color: #0D9488;
-      border-color: #0D9488;
+
+    .btn-outline-teal, .btn-outline-navy {
+      color: #1E3A8A !important;
+      border-color: #1E3A8A !important;
       font-weight: 600;
+      background-color: transparent;
+      transition: all 0.2s ease;
     }
-    .btn-outline-teal:hover {
-      background-color: #0D9488;
-      color: #ffffff;
+    .btn-outline-teal:hover, .btn-outline-navy:hover {
+      background-color: #1E3A8A !important;
+      color: #ffffff !important;
     }
+
+    /* Warm Amber Civic Action CTA */
+    .btn-amber {
+      background: linear-gradient(135deg, #D97706, #F59E0B);
+      border-color: #D97706;
+      color: #ffffff !important;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+      transition: all 0.2s ease;
+    }
+    .btn-amber:hover {
+      background: linear-gradient(135deg, #B45309, #D97706);
+      border-color: #B45309;
+      color: #ffffff !important;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(217, 119, 6, 0.45);
+    }
+
     .line-clamp-2 {
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -74,7 +114,7 @@
 
       <div class="d-flex align-items-center gap-2">
         <!-- Always Visible Report Button (visible on mobile, tablet & desktop) -->
-        <button class="btn btn-teal rounded-pill px-3 shadow-sm d-flex align-items-center gap-2 fw-bold" data-bs-toggle="modal" data-bs-target="#reportIssueModal">
+        <button class="btn btn-amber rounded-pill px-3 shadow-sm d-flex align-items-center gap-2 fw-bold" data-bs-toggle="modal" data-bs-target="#reportIssueModal">
           <i class="bi bi-plus-circle-fill fs-6"></i>
           <span>+ Report a Problem</span>
         </button>
@@ -119,7 +159,7 @@
           </p>
 
           <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-md-start mb-4">
-            <button class="btn btn-teal btn-lg px-4 rounded-pill shadow-sm d-flex align-items-center gap-2 fw-bold" data-bs-toggle="modal" data-bs-target="#reportIssueModal">
+            <button class="btn btn-amber btn-lg px-4 rounded-pill shadow-sm d-flex align-items-center gap-2 fw-bold" data-bs-toggle="modal" data-bs-target="#reportIssueModal">
               <i class="bi bi-plus-circle-fill"></i>
               <span>Report a Problem</span>
             </button>
@@ -222,7 +262,7 @@
 
         <!-- View Switcher & Report Button -->
         <div class="d-flex align-items-center gap-2">
-          <button class="btn btn-teal btn-sm rounded-pill px-3 shadow-xs d-flex align-items-center gap-1 fw-bold" data-bs-toggle="modal" data-bs-target="#reportIssueModal">
+          <button class="btn btn-amber btn-sm rounded-pill px-3 shadow-xs d-flex align-items-center gap-1 fw-bold" data-bs-toggle="modal" data-bs-target="#reportIssueModal">
             <i class="bi bi-plus-circle-fill"></i>
             <span>Report a Problem</span>
           </button>
@@ -505,7 +545,7 @@
   <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content border-0 shadow-lg rounded-4 text-center p-4">
-        <div class="mx-auto mb-3" style="width: 64px; height: 64px; border-radius: 50%; background-color: #CCFBF1; color: #0D9488; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+        <div class="mx-auto mb-3" style="width: 64px; height: 64px; border-radius: 50%; background-color: #DBEAFE; color: #1E3A8A; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
           <i class="bi bi-check-circle-fill"></i>
         </div>
         <h4 class="fw-bold text-dark mb-1">Complaint Successfully Lodged!</h4>
@@ -571,7 +611,7 @@
   </footer>
 
   <!-- Floating Action Button (Always Accessible on Screen) -->
-  <button class="btn btn-teal rounded-pill px-4 py-2 shadow-lg position-fixed bottom-0 end-0 m-4 fw-bold d-flex align-items-center gap-2" style="z-index: 1050; border: 2px solid #fff;" data-bs-toggle="modal" data-bs-target="#reportIssueModal">
+  <button class="btn btn-amber rounded-pill px-4 py-2 shadow-lg position-fixed bottom-0 end-0 m-4 fw-bold d-flex align-items-center gap-2" style="z-index: 1050; border: 2px solid #fff;" data-bs-toggle="modal" data-bs-target="#reportIssueModal">
     <i class="bi bi-plus-circle-fill fs-5"></i>
     <span>Report a Problem</span>
   </button>
