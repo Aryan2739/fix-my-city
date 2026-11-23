@@ -274,12 +274,12 @@ function updateMapMarkers(items) {
   mapMarkers = [];
 
   items.forEach(c => {
-    const pinColor = c.status === "resolved" ? "#10B981" : (c.status === "in-progress" ? "#F59E0B" : "#EF4444");
+    const pinColor = c.status === "resolved" ? "#34C759" : (c.status === "in-progress" ? "#FF9500" : "#FF3B30");
 
     const customIcon = L.divIcon({
       className: "custom-map-pin",
       html: `
-        <div style="background-color: ${pinColor}; width: 30px; height: 30px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); border: 2px solid #fff;">
+        <div style="background-color: ${pinColor}; width: 30px; height: 30px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); border: 2px solid #fff;">
           <i class="bi ${c.categoryIcon}" style="transform: rotate(45deg); color: #fff; font-size: 14px;"></i>
         </div>
       `,
@@ -290,11 +290,11 @@ function updateMapMarkers(items) {
     const marker = L.marker([c.lat, c.lng], { icon: customIcon }).addTo(leafletMap);
     
     marker.bindPopup(`
-      <div style="font-family: Inter, sans-serif; min-width: 200px;">
-        <span class="badge" style="background-color: ${pinColor}; color: #fff; font-size: 11px;">${c.status.toUpperCase()}</span>
-        <h6 style="margin: 6px 0 3px; font-weight: 700; font-size: 13px;">${c.title}</h6>
-        <p style="margin: 0 0 6px; font-size: 11px; color: #64748B;">${c.address}</p>
-        <button onclick="trackTicket('${c.id}')" style="background: #1E3A8A; color: #fff; border: none; padding: 4px 10px; border-radius: 6px; font-size: 11px; cursor: pointer; width: 100%;">
+      <div style="font-family: -apple-system, BlinkMacSystemFont, Inter, sans-serif; min-width: 200px;">
+        <span class="badge" style="background-color: ${pinColor}; color: #fff; font-size: 10px; border-radius: 980px; padding: 3px 8px;">${c.status.toUpperCase()}</span>
+        <h6 style="margin: 6px 0 3px; font-weight: 600; font-size: 13px; color: #1D1D1F;">${c.title}</h6>
+        <p style="margin: 0 0 6px; font-size: 11px; color: #86868B;">${c.address}</p>
+        <button onclick="trackTicket('${c.id}')" style="background: #0071E3; color: #fff; border: none; padding: 6px 12px; border-radius: 980px; font-size: 11px; font-weight: 500; cursor: pointer; width: 100%;">
           View Resolution Progress
         </button>
       </div>

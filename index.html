@@ -23,68 +23,64 @@
   <link rel="stylesheet" href="styles.css">
 
   <style>
-    /* Deep Royal Navy & Warm Amber Municipal Theme */
+    /* Clean Apple Neutral Overrides */
     :root {
-      --fmc-primary: #1E3A8A;       /* Deep Royal Navy */
-      --fmc-primary-dark: #172554;
-      --fmc-primary-hover: #1D4ED8;
-      --fmc-primary-light: #DBEAFE;
-      --fmc-accent: #D97706;        /* Warm Amber */
-      --fmc-accent-dark: #B45309;
-      --fmc-accent-hover: #F59E0B;
-      --fmc-accent-light: #FEF3C7;
+      --apple-blue: #0071E3;
+      --apple-blue-hover: #0077ED;
+      --apple-blue-subtle: #E8F2FD;
+      --apple-dark: #1D1D1F;
+      --apple-gray: #86868B;
+      --apple-light: #F5F5F7;
+      --apple-border: #E5E5EA;
     }
 
-    .text-teal, .text-navy { color: #1E3A8A !important; }
-    .text-amber { color: #D97706 !important; }
-    .bg-teal, .bg-navy { background-color: #1E3A8A !important; color: #ffffff !important; }
-    .bg-teal-subtle, .bg-navy-subtle { background-color: #DBEAFE !important; color: #1E3A8A !important; }
-    .bg-amber-subtle { background-color: #FEF3C7 !important; color: #92400E !important; }
-
-    /* Royal Navy Primary Action */
-    .btn-teal, .btn-navy {
-      background: linear-gradient(135deg, #1E3A8A, #1D4ED8);
-      border-color: #1E3A8A;
+    .text-teal, .text-primary-apple { color: var(--apple-blue) !important; }
+    .bg-teal, .bg-primary-apple { background-color: var(--apple-blue) !important; color: #ffffff !important; }
+    .bg-teal-subtle { background-color: var(--apple-blue-subtle) !important; color: var(--apple-blue) !important; }
+    
+    /* Apple Pill Buttons */
+    .btn-teal, .btn-amber, .btn-apple-primary {
+      background-color: var(--apple-blue) !important;
+      border: 1px solid var(--apple-blue) !important;
       color: #ffffff !important;
-      font-weight: 600;
-      box-shadow: 0 4px 10px rgba(30, 58, 138, 0.25);
-      transition: all 0.2s ease;
+      font-weight: 500 !important;
+      border-radius: 980px !important;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
-    .btn-teal:hover, .btn-navy:hover {
-      background: linear-gradient(135deg, #172554, #1E3A8A);
-      border-color: #172554;
+    .btn-teal:hover, .btn-amber:hover, .btn-apple-primary:hover {
+      background-color: var(--apple-blue-hover) !important;
+      border-color: var(--apple-blue-hover) !important;
       color: #ffffff !important;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 14px rgba(30, 58, 138, 0.35);
-    }
-
-    .btn-outline-teal, .btn-outline-navy {
-      color: #1E3A8A !important;
-      border-color: #1E3A8A !important;
-      font-weight: 600;
-      background-color: transparent;
-      transition: all 0.2s ease;
-    }
-    .btn-outline-teal:hover, .btn-outline-navy:hover {
-      background-color: #1E3A8A !important;
-      color: #ffffff !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.22) !important;
     }
 
-    /* Warm Amber Civic Action CTA */
-    .btn-amber {
-      background: linear-gradient(135deg, #D97706, #F59E0B);
-      border-color: #D97706;
-      color: #ffffff !important;
-      font-weight: 700;
-      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
-      transition: all 0.2s ease;
+    .btn-outline-teal, .btn-apple-secondary {
+      color: var(--apple-dark) !important;
+      border: 1px solid #D2D2D7 !important;
+      background-color: #FFFFFF !important;
+      font-weight: 500 !important;
+      border-radius: 980px !important;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
-    .btn-amber:hover {
-      background: linear-gradient(135deg, #B45309, #D97706);
-      border-color: #B45309;
-      color: #ffffff !important;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(217, 119, 6, 0.45);
+    .btn-outline-teal:hover, .btn-apple-secondary:hover {
+      background-color: var(--apple-light) !important;
+      color: var(--apple-dark) !important;
+      border-color: #C7C7CC !important;
+    }
+
+    .btn-outline-secondary {
+      color: var(--apple-dark) !important;
+      border: 1px solid #D2D2D7 !important;
+      background-color: #FFFFFF !important;
+      border-radius: 980px !important;
+      font-weight: 500 !important;
+    }
+    .btn-outline-secondary:hover {
+      background-color: var(--apple-light) !important;
+      border-color: #C7C7CC !important;
+      color: var(--apple-dark) !important;
     }
 
     .line-clamp-2 {
@@ -107,14 +103,14 @@
           <i class="bi bi-geo-alt-fill"></i>
         </div>
         <div>
-          <span class="fs-5 fw-extrabold text-teal">FixMy</span><span class="fs-5 fw-extrabold text-dark">City</span>
-          <span class="badge bg-teal-subtle text-teal ms-1 d-none d-sm-inline-block small">Ramdeobaba University (RBU)</span>
+          <span class="fs-5 fw-bold text-dark">FixMy</span><span class="fs-5 fw-bold" style="color: var(--apple-blue);">City</span>
+          <span class="badge bg-light text-secondary border ms-1 d-none d-sm-inline-block small" style="border-radius: 980px;">RBU Campus, Nagpur</span>
         </div>
       </a>
 
       <div class="d-flex align-items-center gap-2">
         <!-- Always Visible Report Button (visible on mobile, tablet & desktop) -->
-        <button class="btn btn-amber rounded-pill px-3 shadow-sm d-flex align-items-center gap-2 fw-bold" data-bs-toggle="modal" data-bs-target="#reportIssueModal">
+        <button class="btn btn-teal rounded-pill px-3 d-flex align-items-center gap-2 fw-medium" data-bs-toggle="modal" data-bs-target="#reportIssueModal">
           <i class="bi bi-plus-circle-fill fs-6"></i>
           <span>+ Report a Problem</span>
         </button>
@@ -148,22 +144,22 @@
       <div class="row align-items-center g-5">
         <div class="col-lg-7">
           <div class="hero-pill mb-3">
-            <i class="bi bi-broadcast text-teal"></i> Direct Bridge to Municipal Public Services
+            <i class="bi bi-shield-check text-teal"></i> Official Campus Civic Redressal Portal
           </div>
-          <h1 class="display-5 fw-extrabold text-dark tracking-tight mb-3">
+          <h1 class="display-5 fw-bold text-dark tracking-tight mb-3">
             Spotted a problem in your city? <br>
-            <span class="text-teal">Report it. Track it. Get it fixed.</span>
+            <span style="color: var(--apple-blue);">Report it. Track it. Get it fixed.</span>
           </h1>
           <p class="lead text-muted mb-4 fs-6">
-            Fix My City empowers citizens to submit municipal complaints—from hazardous potholes and broken streetlights to water leaks and illegal dumping. City departments review, dispatch field crews, and resolve tickets transparently.
+            Fix My City empowers students and citizens to submit municipal complaints—from hazardous potholes and broken streetlights to water leaks and garbage dumping. City departments review, dispatch field crews, and resolve tickets transparently.
           </p>
 
           <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-md-start mb-4">
-            <button class="btn btn-amber btn-lg px-4 rounded-pill shadow-sm d-flex align-items-center gap-2 fw-bold" data-bs-toggle="modal" data-bs-target="#reportIssueModal">
+            <button class="btn btn-teal btn-lg px-4 rounded-pill d-flex align-items-center gap-2 fw-medium" data-bs-toggle="modal" data-bs-target="#reportIssueModal">
               <i class="bi bi-plus-circle-fill"></i>
               <span>Report a Problem</span>
             </button>
-            <a href="#feed" class="btn btn-outline-secondary btn-lg px-4 rounded-pill d-flex align-items-center gap-2">
+            <a href="#feed" class="btn btn-outline-secondary btn-lg px-4 rounded-pill d-flex align-items-center gap-2 fw-medium">
               <i class="bi bi-map-fill text-teal"></i>
               <span>Explore City Map</span>
             </a>
@@ -262,7 +258,7 @@
 
         <!-- View Switcher & Report Button -->
         <div class="d-flex align-items-center gap-2">
-          <button class="btn btn-amber btn-sm rounded-pill px-3 shadow-xs d-flex align-items-center gap-1 fw-bold" data-bs-toggle="modal" data-bs-target="#reportIssueModal">
+          <button class="btn btn-teal btn-sm rounded-pill px-3 d-flex align-items-center gap-1 fw-medium" data-bs-toggle="modal" data-bs-target="#reportIssueModal">
             <i class="bi bi-plus-circle-fill"></i>
             <span>Report a Problem</span>
           </button>
@@ -545,7 +541,7 @@
   <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content border-0 shadow-lg rounded-4 text-center p-4">
-        <div class="mx-auto mb-3" style="width: 64px; height: 64px; border-radius: 50%; background-color: #DBEAFE; color: #1E3A8A; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+        <div class="mx-auto mb-3" style="width: 58px; height: 58px; border-radius: 50%; background-color: #EAF7EE; color: #1B7C38; display: flex; align-items: center; justify-content: center; font-size: 1.8rem;">
           <i class="bi bi-check-circle-fill"></i>
         </div>
         <h4 class="fw-bold text-dark mb-1">Complaint Successfully Lodged!</h4>
@@ -611,7 +607,7 @@
   </footer>
 
   <!-- Floating Action Button (Always Accessible on Screen) -->
-  <button class="btn btn-amber rounded-pill px-4 py-2 shadow-lg position-fixed bottom-0 end-0 m-4 fw-bold d-flex align-items-center gap-2" style="z-index: 1050; border: 2px solid #fff;" data-bs-toggle="modal" data-bs-target="#reportIssueModal">
+  <button class="btn btn-teal rounded-pill px-4 py-2 shadow-sm position-fixed bottom-0 end-0 m-4 fw-medium d-flex align-items-center gap-2" style="z-index: 1050;" data-bs-toggle="modal" data-bs-target="#reportIssueModal">
     <i class="bi bi-plus-circle-fill fs-5"></i>
     <span>Report a Problem</span>
   </button>
