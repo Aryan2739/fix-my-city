@@ -417,7 +417,7 @@ function trackTicket(ticketId) {
           <p class="text-muted small mb-0"><i class="bi bi-geo-alt-fill text-danger me-1"></i>${ticket.address}</p>
         </div>
         <div class="text-end">
-          <span class="badge rounded-pill ${ticket.status === 'resolved' ? 'bg-success' : (ticket.status === 'in-progress' ? 'bg-warning text-dark' : 'bg-danger')} px-3 py-2 fs-6">
+          <span class="badge rounded-2 ${ticket.status === 'resolved' ? 'bg-success' : (ticket.status === 'in-progress' ? 'bg-warning text-dark' : 'bg-danger')} px-3 py-2 fs-6">
             ${ticket.status.toUpperCase()}
           </span>
           <div class="text-muted small mt-1">Severity: <span class="fw-bold text-capitalize">${ticket.severity}</span></div>

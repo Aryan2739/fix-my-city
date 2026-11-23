@@ -16,9 +16,10 @@
   --fmc-status-progress: #D97706;
   --fmc-status-resolved: #16A34A;
   --fmc-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --fmc-radius: 12px;
-  --fmc-radius-sm: 8px;
-  --fmc-radius-pill: 980px;
+  --fmc-radius: 8px;
+  --fmc-radius-sm: 6px;
+  --fmc-radius-xs: 4px;
+  --fmc-radius-pill: 6px;
   --fmc-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
   --fmc-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
   --fmc-shadow-md: 0 4px 14px rgba(0, 0, 0, 0.06);
@@ -70,7 +71,7 @@ body {
   padding: 0.35rem 0.9rem;
   background-color: var(--fmc-bg);
   border: 1px solid var(--fmc-border);
-  border-radius: var(--fmc-radius-pill);
+  border-radius: 6px;
   font-size: 0.825rem;
   font-weight: 500;
   color: var(--fmc-secondary-text);
@@ -107,8 +108,8 @@ body {
   border: 1px solid var(--fmc-border);
   background-color: #FFFFFF;
   color: var(--fmc-secondary-text);
-  border-radius: var(--fmc-radius-pill);
-  padding: 0.4rem 1.1rem;
+  border-radius: 6px;
+  padding: 0.4rem 1rem;
   font-size: 0.85rem;
   font-weight: 500;
   transition: all 0.15s ease;
@@ -160,7 +161,7 @@ body {
   font-size: 0.72rem;
   font-weight: 600;
   padding: 0.3rem 0.65rem;
-  border-radius: var(--fmc-radius-pill);
+  border-radius: 4px;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -210,7 +211,7 @@ body {
   background-color: #FFFFFF;
   color: var(--fmc-dark);
   border: 1px solid var(--fmc-border);
-  border-radius: var(--fmc-radius-pill);
+  border-radius: 6px;
   padding: 0.3rem 0.75rem;
   font-size: 0.8rem;
   font-weight: 500;
@@ -309,7 +310,7 @@ body {
   color: #404040;
   border: 1px solid var(--fmc-border);
   padding: 0.25rem 0.65rem;
-  border-radius: var(--fmc-radius-pill);
+  border-radius: 4px;
   display: inline-block;
 }
 
@@ -375,7 +376,7 @@ body {
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
-  border-radius: var(--fmc-radius-pill);
+  border-radius: 4px;
   color: #FFFFFF;
 }
 
