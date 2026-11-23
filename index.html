@@ -19,42 +19,41 @@
   <!-- Leaflet Map CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
-  <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
+  <!-- Custom Stylesheet (with cache-buster) -->
+  <link rel="stylesheet" href="styles.css?v=20261124_mono">
 
   <style>
-    /* Minimalist Monochrome (Linear / Vercel style) */
-    :root {
-      --mono-black: #000000;
-      --mono-hover: #262626;
-      --mono-subtle: #F5F5F5;
-      --mono-border: #E5E5E5;
-      --mono-text-muted: #737373;
+    /* 100% PURE MONOCHROME OVERRIDES (NO BLUE ANYWHERE) */
+    * {
+      --bs-primary: #000000 !important;
+      --bs-link-color: #000000 !important;
+      --bs-link-hover-color: #262626 !important;
     }
-
-    .text-teal, .text-primary-mono { color: #000000 !important; }
-    .bg-teal, .bg-primary-mono { background-color: #000000 !important; color: #ffffff !important; }
-    .bg-teal-subtle { background-color: #F5F5F5 !important; color: #171717 !important; border: 1px solid #E5E5E5; }
+    a { color: #000000; text-decoration: none; }
+    .text-teal, .text-primary, .text-info, .text-navy, .text-primary-mono { color: #000000 !important; }
+    .bg-teal, .bg-primary, .bg-info, .bg-navy, .bg-primary-mono { background-color: #000000 !important; color: #ffffff !important; }
+    .bg-teal-subtle { background-color: #F5F5F5 !important; color: #000000 !important; border: 1px solid #E5E5E5 !important; }
     
-    /* Monochrome Crisp Buttons */
-    .btn-teal, .btn-amber, .btn-primary {
+    /* Buttons: SOLID PURE JET BLACK - NEVER BLUE */
+    .btn-teal, .btn-amber, .btn-primary, button[data-bs-target="#reportIssueModal"] {
       background-color: #000000 !important;
+      background: #000000 !important;
       border: 1px solid #000000 !important;
       color: #ffffff !important;
-      font-weight: 500 !important;
+      font-weight: 600 !important;
       border-radius: 980px !important;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08) !important;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12) !important;
       transition: all 0.15s ease !important;
     }
-    .btn-teal:hover, .btn-amber:hover, .btn-primary:hover {
+    .btn-teal:hover, .btn-amber:hover, .btn-primary:hover, button[data-bs-target="#reportIssueModal"]:hover {
       background-color: #262626 !important;
+      background: #262626 !important;
       border-color: #262626 !important;
       color: #ffffff !important;
       transform: translateY(-1px) !important;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12) !important;
     }
 
-    .btn-outline-teal, .btn-outline-secondary {
+    .btn-outline-teal, .btn-outline-secondary, .btn-outline-primary {
       color: #000000 !important;
       border: 1px solid #E5E5E5 !important;
       background-color: #FFFFFF !important;
@@ -62,7 +61,7 @@
       border-radius: 980px !important;
       transition: all 0.15s ease !important;
     }
-    .btn-outline-teal:hover, .btn-outline-secondary:hover {
+    .btn-outline-teal:hover, .btn-outline-secondary:hover, .btn-outline-primary:hover {
       background-color: #F5F5F5 !important;
       color: #000000 !important;
       border-color: #D4D4D4 !important;
@@ -576,7 +575,7 @@
       <div class="row align-items-center g-3">
         <div class="col-md-6 text-center text-md-start">
           <div class="d-flex align-items-center gap-2 justify-content-center justify-content-md-start">
-            <span class="fw-bold text-teal fs-6">FixMyCity</span>
+            <span class="fw-bold text-dark fs-6">FixMyCity</span>
             <span class="text-muted small">| Civic Public Services Grievance Redressal Portal</span>
           </div>
           <small class="text-muted d-block mt-1">Designed with Figma UI/UX prototyping system & implemented in Bootstrap 5 & HTML5/JS.</small>
@@ -592,7 +591,7 @@
   </footer>
 
   <!-- Floating Action Button (Always Accessible on Screen) -->
-  <button class="btn btn-teal rounded-pill px-4 py-2 shadow-sm position-fixed bottom-0 end-0 m-4 fw-medium d-flex align-items-center gap-2" style="z-index: 1050;" data-bs-toggle="modal" data-bs-target="#reportIssueModal">
+  <button class="btn btn-teal rounded-pill px-4 py-2 shadow position-fixed bottom-0 end-0 m-4 fw-medium d-flex align-items-center gap-2" style="z-index: 1050; background: #000000 !important; color: #ffffff !important; border: 1px solid #000000 !important;" data-bs-toggle="modal" data-bs-target="#reportIssueModal">
     <i class="bi bi-plus-circle-fill fs-5"></i>
     <span>Report a Problem</span>
   </button>
