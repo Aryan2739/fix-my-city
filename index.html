@@ -8,81 +8,25 @@
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Bootstrap 5.3 CSS -->
+  <!-- Bootstrap 5.3 CSS (Layout & Grid only, NO Bootstrap JS) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-  <!-- Leaflet Map CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-
-  <!-- Custom Stylesheet (with cache-buster) -->
-  <link rel="stylesheet" href="styles.css?v=20261124_boxes_v1">
-
-  <style>
-    /* 100% PURE MONOCHROME BOX DESIGN (NO PILLS, NO BLUE) */
-    * {
-      --bs-primary: #000000 !important;
-      --bs-link-color: #000000 !important;
-      --bs-link-hover-color: #262626 !important;
-    }
-    a { color: #000000; text-decoration: none; }
-    .text-teal, .text-primary, .text-info, .text-navy, .text-primary-mono { color: #000000 !important; }
-    .bg-teal, .bg-primary, .bg-info, .bg-navy, .bg-primary-mono { background-color: #000000 !important; color: #ffffff !important; }
-    .bg-teal-subtle { background-color: #F5F5F5 !important; color: #000000 !important; border: 1px solid #E5E5E5 !important; border-radius: 4px !important; }
-    
-    /* Buttons: SOLID PURE JET BLACK CRISP BOXES */
-    .btn-teal, .btn-amber, .btn-primary, button[data-bs-target="#reportIssueModal"] {
-      background-color: #000000 !important;
-      background: #000000 !important;
-      border: 1px solid #000000 !important;
-      color: #ffffff !important;
-      font-weight: 600 !important;
-      border-radius: 6px !important;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08) !important;
-      transition: all 0.15s ease !important;
-    }
-    .btn-teal:hover, .btn-amber:hover, .btn-primary:hover, button[data-bs-target="#reportIssueModal"]:hover {
-      background-color: #262626 !important;
-      background: #262626 !important;
-      border-color: #262626 !important;
-      color: #ffffff !important;
-      transform: translateY(-1px) !important;
-    }
-
-    .btn-outline-teal, .btn-outline-secondary, .btn-outline-primary {
-      color: #000000 !important;
-      border: 1px solid #E5E5E5 !important;
-      background-color: #FFFFFF !important;
-      font-weight: 500 !important;
-      border-radius: 6px !important;
-      transition: all 0.15s ease !important;
-    }
-    .btn-outline-teal:hover, .btn-outline-secondary:hover, .btn-outline-primary:hover {
-      background-color: #F5F5F5 !important;
-      color: #000000 !important;
-      border-color: #D4D4D4 !important;
-    }
-
-    .line-clamp-2 {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-  </style>
+  <!-- Custom Pure CSS Stylesheet (Zero JavaScript) -->
+  <link rel="stylesheet" href="styles.css?v=20261124_pure_css">
 </head>
 <body>
 
   <!-- ========================================================================= -->
-  <!-- NAVIGATION BAR (Figma Frame 1 Navigation Component)                       -->
+  <!-- NAVIGATION BAR (Pure HTML + CSS, Zero JS)                                 -->
   <!-- ========================================================================= -->
-  <nav class="navbar navbar-expand-lg navbar-fmc sticky-top py-2">
+  <nav class="navbar navbar-expand-lg navbar-fmc py-2">
     <div class="container">
-      <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-dark" href="#">
+      <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-dark m-0" href="#">
         <div class="brand-badge">
           <i class="bi bi-geo-alt-fill"></i>
         </div>
@@ -92,28 +36,35 @@
         </div>
       </a>
 
+      <!-- Pure CSS Mobile Hamburger Input -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+
       <div class="d-flex align-items-center gap-2">
-        <!-- Always Visible Report Button (visible on mobile, tablet & desktop) -->
-        <button class="btn btn-teal rounded-2 px-3 d-flex align-items-center gap-2 fw-medium" data-bs-toggle="modal" data-bs-target="#reportIssueModal">
+        <!-- Always Visible Report Button (links to CSS modal) -->
+        <a href="#report-modal" class="btn-black text-decoration-none">
           <i class="bi bi-plus-circle-fill fs-6"></i>
           <span>+ Report a Problem</span>
-        </button>
+        </a>
 
-        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <!-- Pure CSS Hamburger Trigger Label -->
+        <label for="nav-toggle" class="navbar-toggler border-0 shadow-none d-lg-none" style="cursor: pointer;">
           <span class="navbar-toggler-icon"></span>
-        </button>
+        </label>
       </div>
 
-      <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto align-items-lg-center gap-2 my-2 my-lg-0">
+      <div class="nav-collapse-css collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-3 my-2 my-lg-0">
           <li class="nav-item">
-            <a class="nav-link active fw-medium" href="#feed"><i class="bi bi-grid-fill me-1 text-teal"></i>Live Feed</a>
+            <a class="nav-link fw-medium text-dark" href="#feed"><i class="bi bi-grid-fill me-1"></i>Live Feed</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-medium" href="#trackerSection"><i class="bi bi-clock-history me-1 text-teal"></i>Track Ticket</a>
+            <a class="nav-link fw-medium text-dark" href="#map-section"><i class="bi bi-map-fill me-1"></i>Campus Map</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-medium" href="#adminSection"><i class="bi bi-shield-lock-fill me-1 text-teal"></i>Public Services (Admin)</a>
+            <a class="nav-link fw-medium text-dark" href="#trackerSection"><i class="bi bi-clock-history me-1"></i>Track Ticket</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-medium text-dark" href="#adminSection"><i class="bi bi-shield-lock-fill me-1"></i>Operations</a>
           </li>
         </ul>
       </div>
@@ -128,7 +79,7 @@
       <div class="row align-items-center g-5">
         <div class="col-lg-7">
           <div class="hero-pill mb-3">
-            <i class="bi bi-shield-check text-teal"></i> Official Campus Civic Redressal Portal
+            <i class="bi bi-shield-check text-dark"></i> Official Campus Civic Redressal Portal
           </div>
           <h1 class="display-5 fw-bold text-dark tracking-tight mb-3">
             Spotted a problem in your city? <br>
@@ -139,31 +90,31 @@
           </p>
 
           <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-md-start mb-4">
-            <button class="btn btn-teal btn-lg px-4 rounded-2 d-flex align-items-center gap-2 fw-medium" data-bs-toggle="modal" data-bs-target="#reportIssueModal">
+            <a href="#report-modal" class="btn-black text-decoration-none px-4 py-2 fs-6">
               <i class="bi bi-plus-circle-fill"></i>
               <span>Report a Problem</span>
-            </button>
-            <a href="#feed" class="btn btn-outline-secondary btn-lg px-4 rounded-2 d-flex align-items-center gap-2 fw-medium">
+            </a>
+            <a href="#map-section" class="btn-outline-box text-decoration-none px-4 py-2 fs-6">
               <i class="bi bi-map-fill text-dark"></i>
-              <span>Explore City Map</span>
+              <span>Explore Campus Map</span>
             </a>
           </div>
 
           <!-- Quick category boxes -->
           <div class="d-flex flex-wrap align-items-center gap-2 pt-2">
             <span class="small text-muted fw-semibold me-1">Popular categories:</span>
-            <span class="badge bg-white border text-dark py-2 px-3 rounded-2 shadow-xs" style="cursor: pointer;" onclick="document.querySelector('.category-btn[data-category=roads]').click(); document.getElementById('feed').scrollIntoView();">
+            <label for="cat-roads" class="badge bg-white border text-dark py-2 px-3 shadow-xs" style="cursor: pointer; border-radius: 4px;">
               <i class="bi bi-cone-striped text-warning me-1"></i>Potholes
-            </span>
-            <span class="badge bg-white border text-dark py-2 px-3 rounded-2 shadow-xs" style="cursor: pointer;" onclick="document.querySelector('.category-btn[data-category=lighting]').click(); document.getElementById('feed').scrollIntoView();">
+            </label>
+            <label for="cat-lighting" class="badge bg-white border text-dark py-2 px-3 shadow-xs" style="cursor: pointer; border-radius: 4px;">
               <i class="bi bi-lightbulb-off text-danger me-1"></i>Dark Streetlights
-            </span>
-            <span class="badge bg-white border text-dark py-2 px-3 rounded-2 shadow-xs" style="cursor: pointer;" onclick="document.querySelector('.category-btn[data-category=waste]').click(); document.getElementById('feed').scrollIntoView();">
+            </label>
+            <label for="cat-waste" class="badge bg-white border text-dark py-2 px-3 shadow-xs" style="cursor: pointer; border-radius: 4px;">
               <i class="bi bi-trash3 text-success me-1"></i>Garbage Dumping
-            </span>
-            <span class="badge bg-white border text-dark py-2 px-3 rounded-2 shadow-xs" style="cursor: pointer;" onclick="document.querySelector('.category-btn[data-category=water]').click(); document.getElementById('feed').scrollIntoView();">
+            </label>
+            <label for="cat-water" class="badge bg-white border text-dark py-2 px-3 shadow-xs" style="cursor: pointer; border-radius: 4px;">
               <i class="bi bi-droplet-half text-info me-1"></i>Water Leaks
-            </span>
+            </label>
           </div>
         </div>
 
@@ -174,11 +125,11 @@
               <div class="stat-card">
                 <div class="d-flex align-items-center justify-content-between mb-2">
                   <span class="text-muted small fw-semibold">Total Reports</span>
-                  <div class="stat-icon bg-teal-subtle text-teal">
+                  <div class="stat-icon">
                     <i class="bi bi-clipboard2-check"></i>
                   </div>
                 </div>
-                <h3 class="fw-bold mb-0 text-dark" id="statTotal">--</h3>
+                <h3 class="fw-bold mb-0 text-dark">4</h3>
                 <small class="text-muted">Recorded civic issues</small>
               </div>
             </div>
@@ -187,12 +138,12 @@
               <div class="stat-card">
                 <div class="d-flex align-items-center justify-content-between mb-2">
                   <span class="text-muted small fw-semibold">Resolved</span>
-                  <div class="stat-icon bg-success-subtle text-success">
+                  <div class="stat-icon text-success">
                     <i class="bi bi-check-circle-fill"></i>
                   </div>
                 </div>
-                <h3 class="fw-bold mb-0 text-success" id="statResolved">--</h3>
-                <small class="text-muted" id="resolutionRateBadge">Verified fixed</small>
+                <h3 class="fw-bold mb-0 text-success">1</h3>
+                <small class="text-muted">Verified fixed (25%)</small>
               </div>
             </div>
 
@@ -200,11 +151,11 @@
               <div class="stat-card">
                 <div class="d-flex align-items-center justify-content-between mb-2">
                   <span class="text-muted small fw-semibold">In Progress</span>
-                  <div class="stat-icon bg-warning-subtle text-warning">
+                  <div class="stat-icon text-warning">
                     <i class="bi bi-tools"></i>
                   </div>
                 </div>
-                <h3 class="fw-bold mb-0 text-warning" id="statInProgress">--</h3>
+                <h3 class="fw-bold mb-0 text-warning">2</h3>
                 <small class="text-muted">Field crews active</small>
               </div>
             </div>
@@ -213,11 +164,11 @@
               <div class="stat-card">
                 <div class="d-flex align-items-center justify-content-between mb-2">
                   <span class="text-muted small fw-semibold">Open / Triage</span>
-                  <div class="stat-icon bg-danger-subtle text-danger">
+                  <div class="stat-icon text-danger">
                     <i class="bi bi-bell-fill"></i>
                   </div>
                 </div>
-                <h3 class="fw-bold mb-0 text-danger" id="statOpen">--</h3>
+                <h3 class="fw-bold mb-0 text-danger">1</h3>
                 <small class="text-muted">Awaiting crew dispatch</small>
               </div>
             </div>
@@ -228,344 +179,457 @@
   </header>
 
   <!-- ========================================================================= -->
-  <!-- MAIN COMPLAINTS FEED & INTERACTIVE MAP SECTION                            -->
+  <!-- MAIN COMPLAINTS FEED (Pure CSS Interactive Category Filter)              -->
   <!-- ========================================================================= -->
   <section class="py-5" id="feed">
     <div class="container">
       
-      <!-- Section Header & Filter Toolbar -->
+      <!-- Hidden Radio Buttons that control the Category Filter (Pure CSS) -->
+      <input type="radio" name="categoryFilter" id="cat-all" class="category-radio" checked>
+      <input type="radio" name="categoryFilter" id="cat-roads" class="category-radio">
+      <input type="radio" name="categoryFilter" id="cat-lighting" class="category-radio">
+      <input type="radio" name="categoryFilter" id="cat-waste" class="category-radio">
+      <input type="radio" name="categoryFilter" id="cat-water" class="category-radio">
+
+      <!-- Section Header -->
       <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
         <div>
           <h2 class="h3 fw-bold text-dark mb-1">Live Campus & Neighborhood Reports</h2>
-          <p class="text-muted small mb-0">Browse real-time complaints reported across Ramdeobaba University campus and Katol Road, Nagpur.</p>
+          <p class="text-muted small mb-0">Real authentic complaints reported across Shri Ramdeobaba University campus and Katol Road, Nagpur.</p>
         </div>
 
-        <!-- View Switcher & Report Button -->
-        <div class="d-flex align-items-center gap-2">
-          <button class="btn btn-teal btn-sm rounded-2 px-3 d-flex align-items-center gap-1 fw-medium" data-bs-toggle="modal" data-bs-target="#reportIssueModal">
-            <i class="bi bi-plus-circle-fill"></i>
-            <span>Report a Problem</span>
-          </button>
-          <div class="btn-group p-1 bg-light border rounded-2 shadow-xs" role="group">
-            <button type="button" class="btn btn-sm rounded-2 active px-3" id="btnGridView">
-              <i class="bi bi-grid-3x3-gap-fill me-1"></i> Cards View
-            </button>
-            <button type="button" class="btn btn-sm rounded-2 px-3" id="btnMapView">
-              <i class="bi bi-geo-alt-fill me-1"></i> Interactive Map
-            </button>
+        <a href="#report-modal" class="btn-black text-decoration-none">
+          <i class="bi bi-plus-circle-fill"></i>
+          <span>Report a Problem</span>
+        </a>
+      </div>
+
+      <!-- Filter Bar (Pure CSS Clickable Category Buttons) -->
+      <div class="card border p-3 rounded-2 mb-4 bg-white shadow-xs">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <div class="category-labels-bar">
+            <label for="cat-all" class="cat-label-btn cat-label-all"><i class="bi bi-grid-fill"></i> All (4)</label>
+            <label for="cat-roads" class="cat-label-btn cat-label-roads"><i class="bi bi-cone-striped text-warning"></i> Roads & Potholes (1)</label>
+            <label for="cat-lighting" class="cat-label-btn cat-label-lighting"><i class="bi bi-lightbulb-off-fill text-danger"></i> Street Lighting (1)</label>
+            <label for="cat-waste" class="cat-label-btn cat-label-waste"><i class="bi bi-trash3-fill text-success"></i> Waste (1)</label>
+            <label for="cat-water" class="cat-label-btn cat-label-water"><i class="bi bi-droplet-half text-info"></i> Water & Drainage (1)</label>
+          </div>
+
+          <div class="small text-muted">
+            <i class="bi bi-info-circle me-1"></i>Click category to filter cards instantly (Pure CSS)
           </div>
         </div>
       </div>
 
-      <!-- Filter Bar -->
-      <div class="card border-0 shadow-sm p-3 rounded-4 mb-4 bg-white">
-        <div class="row g-3 align-items-center">
-          <!-- Search input -->
-          <div class="col-lg-4 col-md-6">
-            <div class="input-group">
-              <span class="input-group-text bg-light border-end-0 text-muted">
-                <i class="bi bi-search"></i>
-              </span>
-              <input type="text" id="searchInput" class="form-control bg-light border-start-0 ps-0" placeholder="Search by problem, street, or #ID...">
+      <!-- 4 REAL CIVIC COMPLAINT CARDS -->
+      <div class="row g-4 feed-cards-container">
+
+        <!-- ISSUE 1: POTHOLE -->
+        <div class="col-lg-6 feed-card card-roads">
+          <div class="card h-100 border rounded-2 overflow-hidden bg-white shadow-xs">
+            <div class="position-relative">
+              <img src="assets/pothole.jpg" alt="Deep Hazardous Pothole near Main Entrance Gate" class="issue-thumbnail">
+              <div class="position-absolute top-0 start-0 m-3">
+                <span class="status-badge open">
+                  <span class="status-dot"></span> REPORTED
+                </span>
+              </div>
+              <div class="position-absolute top-0 end-0 m-3">
+                <span class="badge bg-dark text-white font-monospace" style="border-radius: 4px;">#FMC-101</span>
+              </div>
             </div>
-          </div>
 
-          <!-- Category filter buttons -->
-          <div class="col-lg-6 col-md-12 d-flex flex-wrap gap-2 overflow-auto py-1">
-            <button class="category-btn active" data-category="all">All</button>
-            <button class="category-btn" data-category="roads"><i class="bi bi-cone-striped text-warning"></i> Roads</button>
-            <button class="category-btn" data-category="lighting"><i class="bi bi-lightbulb-off-fill text-danger"></i> Lights</button>
-            <button class="category-btn" data-category="waste"><i class="bi bi-trash3-fill text-success"></i> Waste</button>
-            <button class="category-btn" data-category="water"><i class="bi bi-droplet-half text-info"></i> Water</button>
-          </div>
+            <div class="p-3 d-flex flex-column flex-grow-1">
+              <div class="d-flex align-items-center justify-content-between text-muted small mb-2">
+                <span><i class="bi bi-cone-striped me-1 text-warning"></i>Roads & Potholes</span>
+                <span><i class="bi bi-clock me-1"></i>2 hours ago</span>
+              </div>
 
-          <!-- Status Dropdown -->
-          <div class="col-lg-2 col-md-6">
-            <select class="form-select bg-light" id="statusFilterSelect">
-              <option value="all">All Statuses</option>
-              <option value="open">Reported (Open)</option>
-              <option value="in-progress">In Progress</option>
-              <option value="resolved">Resolved</option>
-            </select>
-          </div>
-        </div>
+              <h5 class="fw-bold text-dark mb-2">Deep Hazardous Pothole near Main Entrance Gate</h5>
+              <p class="text-muted small mb-3 flex-grow-1">
+                Large asphalt crater right outside the main college entrance on Katol Road. Student two-wheelers and college buses are swerving into oncoming traffic to avoid it.
+              </p>
 
-        <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top small text-muted">
-          <span id="filterResultCount">Loading complaints...</span>
-          <span><i class="bi bi-info-circle me-1"></i>Click <strong>Upvote</strong> on issues to boost priority in municipal queues</span>
-        </div>
-      </div>
+              <div class="d-flex align-items-center gap-1 text-muted small mb-3">
+                <i class="bi bi-geo-alt-fill text-danger"></i>
+                <span class="text-truncate">Main Gate, Ramdeobaba University, Katol Road, Nagpur</span>
+              </div>
 
-      <!-- Card Grid View Container -->
-      <div id="complaintsGridSection">
-        <div class="row" id="complaintsGrid">
-          <!-- Dynamic cards rendered by app.js -->
-        </div>
-      </div>
+              <div class="d-flex align-items-center justify-content-between pt-2 border-top">
+                <!-- Pure CSS Upvote Checkbox -->
+                <label class="upvote-box">
+                  <input type="checkbox" class="upvote-toggle-input">
+                  <i class="bi bi-hand-thumbs-up"></i>
+                  <span>48 Upvotes</span>
+                </label>
 
-      <!-- Interactive Map View Container (Toggled) -->
-      <div id="complaintsMapSection" class="d-none">
-        <div class="position-relative">
-          <div id="mapContainer"></div>
-          <div class="position-absolute bottom-0 start-0 m-3 p-2 bg-white bg-opacity-95 rounded-3 shadow-sm border small" style="z-index: 1000;">
-            <div class="fw-bold mb-1">Pin Legend:</div>
-            <div class="d-flex align-items-center gap-3">
-              <span><span class="d-inline-block rounded-circle bg-danger me-1" style="width:10px;height:10px;"></span> Open / Reported</span>
-              <span><span class="d-inline-block rounded-circle bg-warning me-1" style="width:10px;height:10px;"></span> In Progress</span>
-              <span><span class="d-inline-block rounded-circle bg-success me-1" style="width:10px;height:10px;"></span> Resolved</span>
+                <div class="d-flex gap-2">
+                  <a href="#modal-fmc101" class="btn-outline-box text-decoration-none py-1 px-3 small">Details</a>
+                  <a href="#tracker-fmc101" class="btn-black text-decoration-none py-1 px-3 small">Track &rarr;</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
+        <!-- ISSUE 2: STREETLIGHT -->
+        <div class="col-lg-6 feed-card card-lighting">
+          <div class="card h-100 border rounded-2 overflow-hidden bg-white shadow-xs">
+            <div class="position-relative">
+              <img src="assets/streetlight.jpg" alt="Dark Streetlights on Campus Hostel Pathway" class="issue-thumbnail">
+              <div class="position-absolute top-0 start-0 m-3">
+                <span class="status-badge in-progress">
+                  <span class="status-dot"></span> IN PROGRESS
+                </span>
+              </div>
+              <div class="position-absolute top-0 end-0 m-3">
+                <span class="badge bg-dark text-white font-monospace" style="border-radius: 4px;">#FMC-102</span>
+              </div>
+            </div>
+
+            <div class="p-3 d-flex flex-column flex-grow-1">
+              <div class="d-flex align-items-center justify-content-between text-muted small mb-2">
+                <span><i class="bi bi-lightbulb-off-fill me-1 text-danger"></i>Street Lighting</span>
+                <span><i class="bi bi-clock me-1"></i>Yesterday</span>
+              </div>
+
+              <h5 class="fw-bold text-dark mb-2">Series of 4 Dark Streetlights on Campus Hostel Pathway</h5>
+              <p class="text-muted small mb-3 flex-grow-1">
+                Pedestrian walkway between the RBU Boys' Hostel and Tech Park has been completely dark for 3 nights. Poses a security and safety concern for evening students.
+              </p>
+
+              <div class="d-flex align-items-center gap-1 text-muted small mb-3">
+                <i class="bi bi-geo-alt-fill text-danger"></i>
+                <span class="text-truncate">Hostel & Temple Pathway, Ramdeo Tekdi, RBU, Nagpur</span>
+              </div>
+
+              <div class="d-flex align-items-center justify-content-between pt-2 border-top">
+                <label class="upvote-box">
+                  <input type="checkbox" class="upvote-toggle-input">
+                  <i class="bi bi-hand-thumbs-up"></i>
+                  <span>35 Upvotes</span>
+                </label>
+
+                <div class="d-flex gap-2">
+                  <a href="#modal-fmc102" class="btn-outline-box text-decoration-none py-1 px-3 small">Details</a>
+                  <a href="#tracker-fmc102" class="btn-black text-decoration-none py-1 px-3 small">Track &rarr;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ISSUE 3: GARBAGE (RESOLVED WITH BEFORE & AFTER PROOF) -->
+        <div class="col-lg-6 feed-card card-waste">
+          <div class="card h-100 border rounded-2 overflow-hidden bg-white shadow-xs">
+            <div class="position-relative">
+              <img src="assets/garbage.jpg" alt="Overflowing Garbage Bins outside Campus Gate 2" class="issue-thumbnail">
+              <div class="position-absolute top-0 start-0 m-3">
+                <span class="status-badge resolved">
+                  <span class="status-dot"></span> RESOLVED
+                </span>
+              </div>
+              <div class="position-absolute top-0 end-0 m-3">
+                <span class="badge bg-dark text-white font-monospace" style="border-radius: 4px;">#FMC-103</span>
+              </div>
+            </div>
+
+            <div class="p-3 d-flex flex-column flex-grow-1">
+              <div class="d-flex align-items-center justify-content-between text-muted small mb-2">
+                <span><i class="bi bi-trash3-fill me-1 text-success"></i>Waste Management</span>
+                <span><i class="bi bi-clock me-1"></i>2 days ago</span>
+              </div>
+
+              <h5 class="fw-bold text-dark mb-2">Overflowing Garbage Bins outside Campus Gate 2</h5>
+              <p class="text-muted small mb-3 flex-grow-1">
+                Heavy pileup of plastic containers and street litter outside university Gate 2 on Katol Road. Cleared and disinfected by NMC Sanitation team.
+              </p>
+
+              <div class="d-flex align-items-center gap-1 text-muted small mb-3">
+                <i class="bi bi-geo-alt-fill text-danger"></i>
+                <span class="text-truncate">Opposite Gate 2, Gittikhadan, Katol Road, Nagpur</span>
+              </div>
+
+              <div class="d-flex align-items-center justify-content-between pt-2 border-top">
+                <label class="upvote-box">
+                  <input type="checkbox" class="upvote-toggle-input">
+                  <i class="bi bi-hand-thumbs-up"></i>
+                  <span>62 Upvotes</span>
+                </label>
+
+                <div class="d-flex gap-2">
+                  <a href="#modal-fmc103" class="btn-outline-box text-decoration-none py-1 px-3 small">Details</a>
+                  <a href="#tracker-fmc103" class="btn-black text-decoration-none py-1 px-3 small">Track &rarr;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ISSUE 4: WATER LEAK -->
+        <div class="col-lg-6 feed-card card-water">
+          <div class="card h-100 border rounded-2 overflow-hidden bg-white shadow-xs">
+            <div class="position-relative">
+              <img src="assets/water_leak.jpg" alt="Drinking Water Supply Pipeline Leak near Sports Complex" class="issue-thumbnail">
+              <div class="position-absolute top-0 start-0 m-3">
+                <span class="status-badge in-progress">
+                  <span class="status-dot"></span> IN PROGRESS
+                </span>
+              </div>
+              <div class="position-absolute top-0 end-0 m-3">
+                <span class="badge bg-dark text-white font-monospace" style="border-radius: 4px;">#FMC-104</span>
+              </div>
+            </div>
+
+            <div class="p-3 d-flex flex-column flex-grow-1">
+              <div class="d-flex align-items-center justify-content-between text-muted small mb-2">
+                <span><i class="bi bi-droplet-half me-1 text-info"></i>Water & Drainage</span>
+                <span><i class="bi bi-clock me-1"></i>5 hours ago</span>
+              </div>
+
+              <h5 class="fw-bold text-dark mb-2">Drinking Water Supply Pipeline Leak near Sports Complex</h5>
+              <p class="text-muted small mb-3 flex-grow-1">
+                Underground municipal freshwater supply line ruptured. Clean water gushing across the road causing puddles and water wastage near the indoor sports complex.
+              </p>
+
+              <div class="d-flex align-items-center gap-1 text-muted small mb-3">
+                <i class="bi bi-geo-alt-fill text-danger"></i>
+                <span class="text-truncate">Sports Complex Road, Ramdeobaba University, Nagpur</span>
+              </div>
+
+              <div class="d-flex align-items-center justify-content-between pt-2 border-top">
+                <label class="upvote-box">
+                  <input type="checkbox" class="upvote-toggle-input">
+                  <i class="bi bi-hand-thumbs-up"></i>
+                  <span>29 Upvotes</span>
+                </label>
+
+                <div class="d-flex gap-2">
+                  <a href="#modal-fmc104" class="btn-outline-box text-decoration-none py-1 px-3 small">Details</a>
+                  <a href="#tracker-fmc104" class="btn-black text-decoration-none py-1 px-3 small">Track &rarr;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
   <!-- ========================================================================= -->
-  <!-- COMPLAINT LIFECYCLE TRACKER SECTION (Figma Frame 4)                       -->
+  <!-- CAMPUS MAP SECTION (Zero JS - Embeds Katol Road / RBU Nagpur)            -->
   <!-- ========================================================================= -->
-  <section class="py-5 bg-white border-top border-bottom" id="trackerSection">
-    <div class="container">
-      <div class="text-center max-w-700 mx-auto mb-4">
-        <span class="badge bg-teal-subtle text-teal fw-bold px-3 py-1 mb-2">Real-time Accountability</span>
-        <h2 class="h3 fw-bold text-dark">Track Your Complaint's Lifecycle</h2>
-        <p class="text-muted small">Enter your ticket number to see the step-by-step dispatch, assigned municipal crew, and resolution proof photo.</p>
-
-        <!-- Search Bar -->
-        <div class="input-group input-group-lg shadow-sm rounded-2 overflow-hidden mx-auto my-3 border" style="max-width: 520px;">
-          <input type="text" id="ticketSearchInput" class="form-control border-0 ps-4 font-monospace fs-6" placeholder="Enter Ticket ID (e.g. FMC-101, FMC-102)">
-          <button class="btn btn-teal px-4 rounded-0" onclick="trackTicket(document.getElementById('ticketSearchInput').value)">
-            <i class="bi bi-search me-1"></i> Track Status
-          </button>
-        </div>
-
-        <!-- Quick Demo Chips -->
-        <div class="d-flex justify-content-center align-items-center gap-2 flex-wrap small">
-          <span class="text-muted">Sample tickets to test:</span>
-          <button class="btn btn-sm btn-outline-secondary py-0 font-monospace" onclick="trackTicket('FMC-101')">#FMC-101 (Open)</button>
-          <button class="btn btn-sm btn-outline-secondary py-0 font-monospace" onclick="trackTicket('FMC-102')">#FMC-102 (In Progress)</button>
-          <button class="btn btn-sm btn-outline-secondary py-0 font-monospace" onclick="trackTicket('FMC-103')">#FMC-103 (Resolved)</button>
-        </div>
-      </div>
-
-      <!-- Dynamic Ticket Resolution Stepper Output -->
-      <div id="trackerResultCard" class="mt-4">
-        <!-- Rendered by app.js trackTicket() -->
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================================= -->
-  <!-- PUBLIC SERVICES MUNICIPAL ADMIN PORTAL (Figma Frame 5)                    -->
-  <!-- ========================================================================= -->
-  <section class="py-5 bg-light" id="adminSection">
+  <section class="py-5 bg-white border-top border-bottom" id="map-section">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
         <div>
-          <span class="badge bg-dark text-white fw-bold px-3 py-1 mb-2">Municipal Command Center</span>
-          <h2 class="h3 fw-bold text-dark mb-1">Public Services Operations & Triage</h2>
-          <p class="text-muted small mb-0">City department officers triage, assign field crew units, and update issue statuses.</p>
+          <span class="badge bg-light text-dark border mb-1" style="border-radius: 4px;">Geographic Incident Grid</span>
+          <h2 class="h3 fw-bold text-dark mb-1">Ramdeobaba University Campus Map</h2>
+          <p class="text-muted small mb-0">OpenStreetMap satellite coordinate grid centered at Katol Road, Gittikhadan, Nagpur (21.1764° N, 79.0617° E).</p>
         </div>
+
         <div class="d-flex align-items-center gap-2">
-          <button class="btn btn-sm btn-outline-dark" onclick="populateAdminTable()">
-            <i class="bi bi-arrow-clockwise me-1"></i> Refresh Queue
-          </button>
+          <span class="badge border bg-light text-dark py-2 px-3" style="border-radius: 4px;">
+            <i class="bi bi-geo-alt-fill text-danger me-1"></i> 4 Active Geo-Pins
+          </span>
         </div>
       </div>
 
-      <div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-white">
+      <!-- Responsive Embedded Map Frame (Zero JS) -->
+      <div class="position-relative border rounded-2 overflow-hidden shadow-sm" style="height: 480px;">
+        <iframe 
+          width="100%" 
+          height="100%" 
+          style="border: none;"
+          loading="lazy" 
+          title="Campus Map"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=79.0520%2C21.1690%2C79.0710%2C21.1830&amp;layer=mapnik&amp;marker=21.1764%2C79.0617">
+        </iframe>
+
+        <!-- Map Legend Overlay -->
+        <div class="position-absolute bottom-0 start-0 m-3 p-3 bg-white border rounded-2 shadow-sm small" style="z-index: 10; max-width: 320px;">
+          <h6 class="fw-bold mb-2 small text-dark"><i class="bi bi-pin-map-fill me-1"></i> Nagpur Campus Coordinates</h6>
+          <div class="d-flex flex-column gap-1 text-muted" style="font-size: 11px;">
+            <div><span class="text-danger fw-bold">#FMC-101:</span> Main Gate Pothole (21.1772° N, 79.0610° E)</div>
+            <div><span class="text-warning fw-bold">#FMC-102:</span> Hostel Walkway Streetlight (21.1755° N, 79.0625° E)</div>
+            <div><span class="text-success fw-bold">#FMC-103:</span> Gate 2 Garbage Dump (21.1780° N, 79.0598° E)</div>
+            <div><span class="text-warning fw-bold">#FMC-104:</span> Sports Complex Water Pipe (21.1748° N, 79.0632° E)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- TICKET LIFECYCLE TRACKER (Interactive Accordion / Stepper - Zero JS)      -->
+  <!-- ========================================================================= -->
+  <section class="py-5" id="trackerSection">
+    <div class="container">
+      <div class="text-center mb-4" style="max-width: 680px; margin: 0 auto;">
+        <span class="badge bg-light text-dark border px-3 py-1 mb-2" style="border-radius: 4px;">Public Accountability</span>
+        <h2 class="h3 fw-bold text-dark">Track Your Complaint's Lifecycle</h2>
+        <p class="text-muted small">Select any ticket below to inspect its verified 4-stage municipal progression timeline and field dispatch updates.</p>
+      </div>
+
+      <!-- Quick Ticket Selector Tabs -->
+      <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+        <a href="#tracker-fmc101" class="btn-outline-box text-decoration-none py-1 px-3 small font-monospace">#FMC-101 (Pothole)</a>
+        <a href="#tracker-fmc102" class="btn-outline-box text-decoration-none py-1 px-3 small font-monospace">#FMC-102 (Streetlights)</a>
+        <a href="#tracker-fmc103" class="btn-black text-decoration-none py-1 px-3 small font-monospace">#FMC-103 (Garbage Resolved &check;)</a>
+        <a href="#tracker-fmc104" class="btn-outline-box text-decoration-none py-1 px-3 small font-monospace">#FMC-104 (Water Leak)</a>
+      </div>
+
+      <!-- ACTIVE TRACKER CARD: DEFAULT SHOWS RESOLVED TICKET #FMC-103 WITH BEFORE & AFTER PROOF -->
+      <div class="card border rounded-2 p-4 bg-white shadow-xs" id="tracker-fmc103">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 pb-3 border-bottom">
+          <div>
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <span class="badge bg-dark text-white font-monospace" style="border-radius: 4px;">#FMC-103</span>
+              <span class="status-badge resolved"><span class="status-dot"></span> RESOLVED</span>
+            </div>
+            <h4 class="fw-bold mb-1 text-dark">Overflowing Garbage Bins outside Campus Gate 2</h4>
+            <p class="text-muted small mb-0"><i class="bi bi-geo-alt-fill text-danger me-1"></i>Opposite Gate 2, Gittikhadan, Katol Road, Nagpur</p>
+          </div>
+          <div class="text-end">
+            <span class="dept-pill mb-1">NMC Solid Waste & Sanitation</span>
+            <div class="text-muted small">Assigned: <strong class="text-dark">Zone Health Officer S. B. Joshi</strong></div>
+          </div>
+        </div>
+
+        <!-- 4-Stage Visual Stepper -->
+        <div class="tracking-stepper">
+          <div class="step-item completed">
+            <div class="step-circle"><i class="bi bi-check-lg"></i></div>
+            <div class="step-title">1. Registered</div>
+            <div class="step-time">2 days ago, 08:30 AM</div>
+          </div>
+          <div class="step-item completed">
+            <div class="step-circle"><i class="bi bi-check-lg"></i></div>
+            <div class="step-title">2. Verified</div>
+            <div class="step-time">2 days ago, 11:00 AM</div>
+          </div>
+          <div class="step-item completed">
+            <div class="step-circle"><i class="bi bi-check-lg"></i></div>
+            <div class="step-title">3. Crew Dispatched</div>
+            <div class="step-time">Yesterday, 07:30 AM</div>
+          </div>
+          <div class="step-item completed">
+            <div class="step-circle"><i class="bi bi-check-lg"></i></div>
+            <div class="step-title">4. Resolved & Verified</div>
+            <div class="step-time">Yesterday, 02:15 PM</div>
+          </div>
+        </div>
+
+        <!-- Before & After Verification Photo Proof -->
+        <div class="p-3 bg-light border rounded-2 mt-4">
+          <h6 class="fw-bold text-dark mb-3"><i class="bi bi-images me-2"></i>Official Work Verification Proof (Before vs After)</h6>
+          <div class="comparison-container">
+            <div class="comparison-box">
+              <img src="assets/garbage.jpg" alt="Before cleanup">
+              <span class="comparison-label before">BEFORE (CITIZEN REPORT)</span>
+            </div>
+            <div class="comparison-box">
+              <img src="assets/street_cleaned.jpg" alt="After municipal cleanup">
+              <span class="comparison-label after">AFTER (NMC VERIFIED FIXED)</span>
+            </div>
+          </div>
+          <p class="small text-muted mt-2 mb-0">
+            <strong>Resolution Audit:</strong> Waste cleared, bins sanitized with bleaching powder, and perimeter fencing cleared by Sanitation Crew #4.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- MUNICIPAL OPERATIONS TABLE (Figma Frame 4)                                -->
+  <!-- ========================================================================= -->
+  <section class="py-5 bg-white border-top" id="adminSection">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+        <div>
+          <span class="badge bg-light text-dark border mb-1" style="border-radius: 4px;">Figma Prototype Frame 4</span>
+          <h2 class="h3 fw-bold text-dark mb-1">Municipal Public Services Dispatch Center</h2>
+          <p class="text-muted small mb-0">City department view for Nagpur Municipal Corporation officers and campus maintenance teams.</p>
+        </div>
+      </div>
+
+      <div class="card border rounded-2 overflow-hidden shadow-xs">
         <div class="table-responsive">
           <table class="table table-hover align-middle mb-0">
-            <thead class="table-light text-muted small text-uppercase">
-              <tr>
-                <th scope="col" style="width: 100px;">Ticket #</th>
-                <th scope="col">Category</th>
-                <th scope="col">Issue Details & Address</th>
-                <th scope="col">Assigned Department</th>
-                <th scope="col">Priority</th>
-                <th scope="col" style="width: 200px;">Change Status (Action)</th>
-                <th scope="col" style="width: 90px;">Inspect</th>
+            <thead class="table-light">
+              <tr class="small text-uppercase">
+                <th scope="col" class="py-3 ps-3">Ticket #</th>
+                <th scope="col" class="py-3">Category</th>
+                <th scope="col" class="py-3">Incident Title & Location</th>
+                <th scope="col" class="py-3">Department</th>
+                <th scope="col" class="py-3">Status</th>
+                <th scope="col" class="py-3 text-end pe-3">Action</th>
               </tr>
             </thead>
-            <tbody id="adminTableBody" class="small">
-              <!-- Populated by app.js populateAdminTable() -->
+            <tbody>
+              <tr>
+                <td class="ps-3 font-monospace fw-bold">#FMC-101</td>
+                <td><span class="dept-pill"><i class="bi bi-cone-striped me-1"></i>Roads</span></td>
+                <td>
+                  <div class="fw-bold text-dark">Deep Hazardous Pothole near Main Entrance Gate</div>
+                  <div class="text-muted small">Main Gate, Ramdeobaba University, Katol Road</div>
+                </td>
+                <td><small class="fw-semibold">NMC - PWD</small></td>
+                <td><span class="status-badge open"><span class="status-dot"></span> OPEN</span></td>
+                <td class="text-end pe-3">
+                  <a href="#modal-fmc101" class="btn-outline-box py-1 px-2 small text-decoration-none">Inspect</a>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="ps-3 font-monospace fw-bold">#FMC-102</td>
+                <td><span class="dept-pill"><i class="bi bi-lightbulb-off-fill me-1"></i>Lighting</span></td>
+                <td>
+                  <div class="fw-bold text-dark">Series of 4 Dark Streetlights on Campus Hostel Pathway</div>
+                  <div class="text-muted small">Hostel & Temple Pathway, Ramdeo Tekdi, RBU</div>
+                </td>
+                <td><small class="fw-semibold">MSEDCL & NMC Electrical</small></td>
+                <td><span class="status-badge in-progress"><span class="status-dot"></span> IN PROGRESS</span></td>
+                <td class="text-end pe-3">
+                  <a href="#modal-fmc102" class="btn-outline-box py-1 px-2 small text-decoration-none">Inspect</a>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="ps-3 font-monospace fw-bold">#FMC-103</td>
+                <td><span class="dept-pill"><i class="bi bi-trash3-fill me-1"></i>Waste</span></td>
+                <td>
+                  <div class="fw-bold text-dark">Overflowing Garbage Bins outside Campus Gate 2</div>
+                  <div class="text-muted small">Opposite Gate 2, Gittikhadan, Katol Road</div>
+                </td>
+                <td><small class="fw-semibold">NMC Solid Waste & Sanitation</small></td>
+                <td><span class="status-badge resolved"><span class="status-dot"></span> RESOLVED</span></td>
+                <td class="text-end pe-3">
+                  <a href="#modal-fmc103" class="btn-outline-box py-1 px-2 small text-decoration-none">Inspect</a>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="ps-3 font-monospace fw-bold">#FMC-104</td>
+                <td><span class="dept-pill"><i class="bi bi-droplet-half me-1"></i>Water</span></td>
+                <td>
+                  <div class="fw-bold text-dark">Drinking Water Supply Pipeline Leak near Sports Complex</div>
+                  <div class="text-muted small">Sports Complex Road, Ramdeobaba University</div>
+                </td>
+                <td><small class="fw-semibold">Orange City Water (OCW) & NMC</small></td>
+                <td><span class="status-badge in-progress"><span class="status-dot"></span> IN PROGRESS</span></td>
+                <td class="text-end pe-3">
+                  <a href="#modal-fmc104" class="btn-outline-box py-1 px-2 small text-decoration-none">Inspect</a>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- ========================================================================= -->
-  <!-- MODAL: REPORT AN ISSUE (Figma Frame 2)                                    -->
-  <!-- ========================================================================= -->
-  <div class="modal fade" id="reportIssueModal" tabindex="-1" aria-labelledby="reportIssueModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
-        
-        <div class="modal-header bg-light border-bottom px-4 py-3">
-          <div class="d-flex align-items-center gap-2">
-            <div class="brand-badge" style="width: 32px; height: 32px; font-size: 1rem;">
-              <i class="bi bi-megaphone-fill"></i>
-            </div>
-            <div>
-              <h5 class="modal-title fw-bold text-dark mb-0" id="reportIssueModalLabel">Submit a Civic Complaint</h5>
-              <small class="text-muted">Direct notification dispatched to municipal field crews</small>
-            </div>
-          </div>
-          <button type="button" class="btn-close" data-bs-toggle="modal" aria-label="Close"></button>
-        </div>
-
-        <form id="reportIssueForm" onsubmit="submitNewComplaint(event)">
-          <div class="modal-body px-4 py-3">
-            
-            <!-- Step 1: Category Selection Grid (4 Core Categories) -->
-            <label class="form-label fw-bold text-dark small mb-2">1. Select Problem Category <span class="text-danger">*</span></label>
-            <div class="row g-2 mb-3">
-              <div class="col-6 col-md-3">
-                <div class="category-select-card selected" onclick="selectCategory('roads', this)">
-                  <i class="bi bi-cone-striped"></i>
-                  <span class="small fw-semibold d-block">Roads & Potholes</span>
-                </div>
-              </div>
-              <div class="col-6 col-md-3">
-                <div class="category-select-card" onclick="selectCategory('lighting', this)">
-                  <i class="bi bi-lightbulb-off-fill"></i>
-                  <span class="small fw-semibold d-block">Street Lighting</span>
-                </div>
-              </div>
-              <div class="col-6 col-md-3">
-                <div class="category-select-card" onclick="selectCategory('waste', this)">
-                  <i class="bi bi-trash3-fill"></i>
-                  <span class="small fw-semibold d-block">Waste Management</span>
-                </div>
-              </div>
-              <div class="col-6 col-md-3">
-                <div class="category-select-card" onclick="selectCategory('water', this)">
-                  <i class="bi bi-droplet-half"></i>
-                  <span class="small fw-semibold d-block">Water & Drainage</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Step 2: Title & Details -->
-            <div class="row g-3 mb-3">
-              <div class="col-md-8">
-                <label class="form-label fw-bold text-dark small mb-1">Issue Title / Headline <span class="text-danger">*</span></label>
-                <input type="text" id="issueTitleInput" class="form-control" placeholder="e.g. Hazardous deep pothole in front of community center" required>
-              </div>
-              <div class="col-md-4">
-                <label class="form-label fw-bold text-dark small mb-1">Severity Level</label>
-                <select id="issueSeveritySelect" class="form-select">
-                  <option value="medium" selected>Medium (Standard)</option>
-                  <option value="high">High (Hazardous)</option>
-                  <option value="urgent">Urgent / Emergency</option>
-                  <option value="low">Low (Cosmetic)</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label fw-bold text-dark small mb-1">Detailed Description <span class="text-danger">*</span></label>
-              <textarea id="issueDescInput" class="form-control" rows="2" placeholder="Describe the physical condition, approximate dimensions, and any immediate danger..." required></textarea>
-            </div>
-
-            <!-- Step 3: Location with GPS auto-detection -->
-            <div class="mb-3">
-              <label class="form-label fw-bold text-dark small mb-1">Location / Landmark <span class="text-danger">*</span></label>
-              <div class="input-group">
-                <input type="text" id="issueLocationInput" class="form-control" placeholder="e.g. Near Main Gate / Tech Park, Ramdeobaba University, Katol Road, Nagpur" required>
-                <button type="button" class="btn btn-outline-teal" id="btnDetectLoc" onclick="simulateGeoLocation()">
-                  <i class="bi bi-crosshair me-1"></i> Detect My GPS
-                </button>
-              </div>
-            </div>
-
-            <!-- Step 4: Photo Evidence Upload -->
-            <div class="row g-3 align-items-center mb-3">
-              <div class="col-md-7">
-                <label class="form-label fw-bold text-dark small mb-1">Upload Photo Evidence</label>
-                <input type="file" id="issuePhotoInput" class="form-control" accept="image/*" onchange="handleImageUpload(this)">
-                <div class="form-text small">Attaching clear photos speeds up municipal triage by 3x.</div>
-              </div>
-              <div class="col-md-5">
-                <div class="border rounded-3 p-2 text-center bg-light" style="min-height: 90px; display: flex; align-items: center; justify-content: center;">
-                  <div id="uploadPlaceholder" class="text-muted small">
-                    <i class="bi bi-image fs-4 d-block text-secondary"></i>
-                    <span>Photo preview will appear here</span>
-                  </div>
-                  <img id="imagePreview" src="#" alt="Preview" class="img-fluid rounded-2 d-none" style="max-height: 80px; object-fit: cover;">
-                </div>
-              </div>
-            </div>
-
-            <!-- Citizen Identification (Optional) -->
-            <div class="mb-2">
-              <label class="form-label fw-bold text-dark small mb-1">Your Name / Contact (Optional for updates)</label>
-              <input type="text" id="citizenNameInput" class="form-control" placeholder="Enter your name (leave blank to report anonymously)">
-            </div>
-
-          </div>
-
-          <div class="modal-footer bg-light px-4 py-2 border-top">
-            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-teal px-4 fw-bold shadow-sm">
-              <i class="bi bi-send-fill me-1"></i> Submit Report
-            </button>
-          </div>
-        </form>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- ========================================================================= -->
-  <!-- MODAL: SUBMISSION CONFIRMATION (Ticket Generated)                         -->
-  <!-- ========================================================================= -->
-  <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content border-0 shadow-lg rounded-4 text-center p-4">
-        <div class="mx-auto mb-3" style="width: 58px; height: 58px; border-radius: 50%; background-color: #EAF7EE; color: #1B7C38; display: flex; align-items: center; justify-content: center; font-size: 1.8rem;">
-          <i class="bi bi-check-circle-fill"></i>
-        </div>
-        <h4 class="fw-bold text-dark mb-1">Complaint Successfully Lodged!</h4>
-        <p class="text-muted small mb-3">Your report has been securely registered in the municipal database and routed to the assigned civic authority.</p>
-
-        <div class="p-3 bg-light rounded-3 mb-3 border">
-          <span class="text-muted small d-block mb-1">Your Unique Reference Tracking ID:</span>
-          <span class="fs-4 fw-bold font-monospace text-teal" id="newTicketGeneratedId">#FMC-0000</span>
-        </div>
-
-        <p class="small text-muted mb-4">
-          Save this reference code to track field crew dispatch and review before/after resolution pictures.
-        </p>
-
-        <div class="d-flex gap-2">
-          <button type="button" class="btn btn-secondary w-50" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-teal w-50" id="btnModalTrack">
-            <i class="bi bi-clock-history me-1"></i> Track Ticket
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ========================================================================= -->
-  <!-- MODAL: COMPLAINT DETAILS INSPECTOR                                        -->
-  <!-- ========================================================================= -->
-  <div class="modal fade" id="detailsModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
-        <div class="modal-header bg-light border-bottom px-4 py-3">
-          <h5 class="modal-title fw-bold text-dark">Complaint Inspection</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body p-4" id="complaintDetailsContent">
-          <!-- Rendered dynamically -->
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- ========================================================================= -->
   <!-- FOOTER                                                                    -->
@@ -578,12 +642,12 @@
             <span class="fw-bold text-dark fs-6">FixMyCity</span>
             <span class="text-muted small">| Civic Public Services Grievance Redressal Portal</span>
           </div>
-          <small class="text-muted d-block mt-1">Designed with Figma UI/UX prototyping system & implemented in Bootstrap 5 & HTML5/JS.</small>
+          <small class="text-muted d-block mt-1">Built with pure HTML5 + CSS3 (Zero JavaScript) & designed via Figma Prototyping System.</small>
         </div>
         <div class="col-md-6 text-center text-md-end">
           <div class="d-flex justify-content-center justify-content-md-end gap-3 text-muted small">
-            <span><i class="bi bi-telephone-fill text-teal me-1"></i> Helpline: 311 / 1800-CITY-HELP</span>
-            <span><i class="bi bi-shield-check text-teal me-1"></i> Municipal SLA: 48 Hours</span>
+            <span><i class="bi bi-telephone-fill text-dark me-1"></i> Helpline: 311 / 1800-CITY-HELP</span>
+            <span><i class="bi bi-shield-check text-dark me-1"></i> Municipal SLA: 48 Hours</span>
           </div>
         </div>
       </div>
@@ -591,18 +655,227 @@
   </footer>
 
   <!-- Floating Action Button (Always Accessible on Screen) -->
-  <button class="btn btn-teal rounded-2 px-4 py-2 shadow position-fixed bottom-0 end-0 m-4 fw-medium d-flex align-items-center gap-2" style="z-index: 1050; background: #000000 !important; color: #ffffff !important; border: 1px solid #000000 !important; border-radius: 6px !important;" data-bs-toggle="modal" data-bs-target="#reportIssueModal">
+  <a href="#report-modal" class="floating-report-btn text-decoration-none">
     <i class="bi bi-plus-circle-fill fs-5"></i>
     <span>Report a Problem</span>
-  </button>
+  </a>
 
-  <!-- Bootstrap 5.3 Bundle JS (with Popper) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- ========================================================================= -->
+  <!-- PURE CSS MODALS (ZERO JAVASCRIPT - TRIGGERED VIA CSS :target)             -->
+  <!-- ========================================================================= -->
 
-  <!-- Leaflet Map JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- MODAL 1: REPORT ISSUE SUBMISSION FORM -->
+  <div id="report-modal" class="css-modal">
+    <a href="#" class="css-modal-overlay"></a>
+    <div class="css-modal-box">
+      <div class="css-modal-header">
+        <h5 class="fw-bold text-dark m-0"><i class="bi bi-megaphone-fill me-2"></i>Report a Civic Issue</h5>
+        <a href="#" class="css-modal-close text-decoration-none">&times;</a>
+      </div>
+      <div class="css-modal-body">
+        <form action="#success-modal" method="GET">
+          <!-- Step 1: Category Selection -->
+          <label class="form-label fw-bold text-dark small mb-2">1. Select Incident Category</label>
+          <div class="category-choice-grid mb-3">
+            <div>
+              <input type="radio" name="issueCat" id="choice-roads" class="category-choice-input" hidden checked>
+              <label for="choice-roads" class="category-choice-label">
+                <i class="bi bi-cone-striped"></i>
+                <span class="small fw-semibold d-block">Roads & Potholes</span>
+              </label>
+            </div>
+            <div>
+              <input type="radio" name="issueCat" id="choice-lights" class="category-choice-input" hidden>
+              <label for="choice-lights" class="category-choice-label">
+                <i class="bi bi-lightbulb-off"></i>
+                <span class="small fw-semibold d-block">Streetlights</span>
+              </label>
+            </div>
+            <div>
+              <input type="radio" name="issueCat" id="choice-waste" class="category-choice-input" hidden>
+              <label for="choice-waste" class="category-choice-label">
+                <i class="bi bi-trash3"></i>
+                <span class="small fw-semibold d-block">Waste Dumping</span>
+              </label>
+            </div>
+            <div>
+              <input type="radio" name="issueCat" id="choice-water" class="category-choice-input" hidden>
+              <label for="choice-water" class="category-choice-label">
+                <i class="bi bi-droplet-half"></i>
+                <span class="small fw-semibold d-block">Water & Drainage</span>
+              </label>
+            </div>
+          </div>
 
-  <!-- Application Logic -->
-  <script src="app.js"></script>
+          <!-- Step 2: Problem Title -->
+          <div class="mb-3">
+            <label class="form-label fw-bold text-dark small mb-1">2. Short Summary / Title</label>
+            <input type="text" class="form-input-box" placeholder="e.g. Dangerous crater near library turn" required value="Damaged road surface near RBU Boys Hostel">
+          </div>
+
+          <!-- Step 3: Location / Address -->
+          <div class="mb-3">
+            <label class="form-label fw-bold text-dark small mb-1">3. Incident Location (Nagpur Campus)</label>
+            <input type="text" class="form-input-box" required value="Ramdeobaba University, Katol Road, Nagpur (21.1764° N, 79.0617° E)">
+          </div>
+
+          <!-- Step 4: Description -->
+          <div class="mb-3">
+            <label class="form-label fw-bold text-dark small mb-1">4. Detailed Description</label>
+            <textarea class="form-input-box" rows="3" placeholder="Provide details to assist municipal field crew dispatch...">Road depression causing water logging and danger for two-wheelers during evening hours.</textarea>
+          </div>
+
+          <div class="d-flex justify-content-end gap-2 pt-2 border-top">
+            <a href="#" class="btn-outline-box text-decoration-none">Cancel</a>
+            <button type="submit" class="btn-black">Submit to Municipal Queue &rarr;</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: SUBMISSION CONFIRMATION (Ticket #FMC-105 Generated) -->
+  <div id="success-modal" class="css-modal">
+    <a href="#" class="css-modal-overlay"></a>
+    <div class="css-modal-box text-center p-4">
+      <div class="mx-auto mb-3" style="width: 54px; height: 54px; border-radius: 6px; background-color: #F0FDF4; color: #166534; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; border: 1px solid #DCFCE7;">
+        <i class="bi bi-check-lg"></i>
+      </div>
+      <h4 class="fw-bold text-dark mb-1">Complaint Successfully Lodged!</h4>
+      <p class="text-muted small mb-3">Your grievance has been registered directly into the municipal portal queue (Nagpur Municipal Corporation - PWD Zone).</p>
+
+      <div class="p-3 bg-light rounded-2 mb-3 border">
+        <span class="text-muted small d-block mb-1">Your Generated Tracking ID:</span>
+        <span class="fs-4 fw-bold font-monospace text-dark">#FMC-105</span>
+      </div>
+
+      <p class="small text-muted mb-4">
+        Our automated dispatcher has notified field inspectors. An SLA response is committed within 48 hours.
+      </p>
+
+      <a href="#" class="btn-black text-decoration-none d-inline-block px-4">Done / Return to Feed</a>
+    </div>
+  </div>
+
+  <!-- MODAL 3: INSPECTION DETAILS (#FMC-101 POTHOLE) -->
+  <div id="modal-fmc101" class="css-modal">
+    <a href="#" class="css-modal-overlay"></a>
+    <div class="css-modal-box">
+      <div class="css-modal-header">
+        <h5 class="fw-bold text-dark m-0">Complaint Details: #FMC-101</h5>
+        <a href="#" class="css-modal-close text-decoration-none">&times;</a>
+      </div>
+      <div class="css-modal-body">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <img src="assets/pothole.jpg" alt="Pothole" class="img-fluid rounded-2 border mb-2">
+            <span class="status-badge open"><span class="status-dot"></span> OPEN</span>
+          </div>
+          <div class="col-md-6">
+            <h5 class="fw-bold text-dark mb-2">Deep Hazardous Pothole near Main Entrance Gate</h5>
+            <p class="small text-muted mb-2"><i class="bi bi-geo-alt-fill text-danger me-1"></i>Main Gate, Ramdeobaba University, Katol Road, Nagpur</p>
+            <p class="small text-muted"><strong>Category:</strong> Roads & Potholes</p>
+            <p class="small text-muted"><strong>Assigned Department:</strong> NMC PWD Division</p>
+            <p class="small text-muted"><strong>Reported By:</strong> Aman Sharma (CSE Dept)</p>
+            <p class="small text-muted"><strong>Current Stage:</strong> Verified by Dharampeth Zone Engineer; asphalt cold-mix repair crew queued for dispatch.</p>
+          </div>
+        </div>
+        <div class="text-end pt-3 border-top mt-3">
+          <a href="#" class="btn-black text-decoration-none px-3 py-1 small">Close</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4: INSPECTION DETAILS (#FMC-102 STREETLIGHT) -->
+  <div id="modal-fmc102" class="css-modal">
+    <a href="#" class="css-modal-overlay"></a>
+    <div class="css-modal-box">
+      <div class="css-modal-header">
+        <h5 class="fw-bold text-dark m-0">Complaint Details: #FMC-102</h5>
+        <a href="#" class="css-modal-close text-decoration-none">&times;</a>
+      </div>
+      <div class="css-modal-body">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <img src="assets/streetlight.jpg" alt="Streetlights" class="img-fluid rounded-2 border mb-2">
+            <span class="status-badge in-progress"><span class="status-dot"></span> IN PROGRESS</span>
+          </div>
+          <div class="col-md-6">
+            <h5 class="fw-bold text-dark mb-2">Series of 4 Dark Streetlights on Campus Hostel Pathway</h5>
+            <p class="small text-muted mb-2"><i class="bi bi-geo-alt-fill text-danger me-1"></i>Hostel & Temple Pathway, Ramdeo Tekdi, RBU</p>
+            <p class="small text-muted"><strong>Category:</strong> Street Lighting</p>
+            <p class="small text-muted"><strong>Assigned Department:</strong> MSEDCL & NMC Electrical Works</p>
+            <p class="small text-muted"><strong>Assigned Officer:</strong> Junior Engineer K. B. Patil</p>
+            <p class="small text-muted"><strong>Current Stage:</strong> Transformer cable fault identified; maintenance bucket truck on site replacing 70W LED ballasts.</p>
+          </div>
+        </div>
+        <div class="text-end pt-3 border-top mt-3">
+          <a href="#" class="btn-black text-decoration-none px-3 py-1 small">Close</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 5: INSPECTION DETAILS (#FMC-103 GARBAGE DUMP) -->
+  <div id="modal-fmc103" class="css-modal">
+    <a href="#" class="css-modal-overlay"></a>
+    <div class="css-modal-box">
+      <div class="css-modal-header">
+        <h5 class="fw-bold text-dark m-0">Complaint Details: #FMC-103</h5>
+        <a href="#" class="css-modal-close text-decoration-none">&times;</a>
+      </div>
+      <div class="css-modal-body">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <img src="assets/garbage.jpg" alt="Garbage" class="img-fluid rounded-2 border mb-2">
+            <span class="status-badge resolved"><span class="status-dot"></span> RESOLVED</span>
+          </div>
+          <div class="col-md-6">
+            <h5 class="fw-bold text-dark mb-2">Overflowing Garbage Bins outside Campus Gate 2</h5>
+            <p class="small text-muted mb-2"><i class="bi bi-geo-alt-fill text-danger me-1"></i>Opposite Gate 2, Gittikhadan, Katol Road, Nagpur</p>
+            <p class="small text-muted"><strong>Category:</strong> Waste Management</p>
+            <p class="small text-muted"><strong>Assigned Department:</strong> NMC Solid Waste & Sanitation</p>
+            <p class="small text-muted"><strong>Assigned Officer:</strong> Health Officer S. B. Joshi</p>
+            <p class="small text-muted"><strong>Current Stage:</strong> Compactor vehicle #12 collected all debris; pavement bleached and cleared.</p>
+          </div>
+        </div>
+        <div class="text-end pt-3 border-top mt-3">
+          <a href="#" class="btn-black text-decoration-none px-3 py-1 small">Close</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 6: INSPECTION DETAILS (#FMC-104 WATER LEAK) -->
+  <div id="modal-fmc104" class="css-modal">
+    <a href="#" class="css-modal-overlay"></a>
+    <div class="css-modal-box">
+      <div class="css-modal-header">
+        <h5 class="fw-bold text-dark m-0">Complaint Details: #FMC-104</h5>
+        <a href="#" class="css-modal-close text-decoration-none">&times;</a>
+      </div>
+      <div class="css-modal-body">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <img src="assets/water_leak.jpg" alt="Water Leak" class="img-fluid rounded-2 border mb-2">
+            <span class="status-badge in-progress"><span class="status-dot"></span> IN PROGRESS</span>
+          </div>
+          <div class="col-md-6">
+            <h5 class="fw-bold text-dark mb-2">Drinking Water Supply Pipeline Leak near Sports Complex</h5>
+            <p class="small text-muted mb-2"><i class="bi bi-geo-alt-fill text-danger me-1"></i>Sports Complex Road, Ramdeobaba University, Nagpur</p>
+            <p class="small text-muted"><strong>Category:</strong> Water & Drainage</p>
+            <p class="small text-muted"><strong>Assigned Department:</strong> Orange City Water (OCW) & NMC</p>
+            <p class="small text-muted"><strong>Assigned Officer:</strong> Distribution Engineer M. G. Rao</p>
+            <p class="small text-muted"><strong>Current Stage:</strong> Sluice valve isolated; excavation completed to clamp 150mm cracked distribution pipe.</p>
+          </div>
+        </div>
+        <div class="text-end pt-3 border-top mt-3">
+          <a href="#" class="btn-black text-decoration-none px-3 py-1 small">Close</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

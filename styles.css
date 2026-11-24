@@ -1,9 +1,8 @@
 :root {
-  /* Minimalist Monochrome (Linear / Vercel Aesthetic) */
+  /* Minimalist Monochrome (Linear / Vercel style) */
   --fmc-primary: #000000;
   --fmc-primary-hover: #262626;
   --fmc-primary-light: #F5F5F5;
-  --fmc-primary-subtle: #FAFAFA;
   --fmc-dark: #000000;
   --fmc-slate: #171717;
   --fmc-secondary-text: #525252;
@@ -19,11 +18,14 @@
   --fmc-radius: 8px;
   --fmc-radius-sm: 6px;
   --fmc-radius-xs: 4px;
-  --fmc-radius-pill: 6px;
   --fmc-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
   --fmc-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
   --fmc-shadow-md: 0 4px 14px rgba(0, 0, 0, 0.06);
   --fmc-shadow-lg: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -34,14 +36,24 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #000000;
+  text-decoration: none;
 }
 
 /* Header & Navigation */
 .navbar-fmc {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--fmc-border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   transition: all 0.2s ease;
 }
 
@@ -50,11 +62,70 @@ body {
   color: #FFFFFF;
   width: 36px;
   height: 36px;
-  border-radius: 8px;
+  border-radius: 6px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-size: 1.1rem;
+}
+
+/* Pure CSS Nav Toggle (Zero JS) */
+.nav-toggle-checkbox {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .nav-collapse-css {
+    display: none;
+    width: 100%;
+    padding: 1rem 0;
+  }
+  .nav-toggle-checkbox:checked ~ .nav-collapse-css {
+    display: block;
+  }
+}
+
+/* Solid Jet Black Buttons (Boxes, No Pills) */
+.btn-black {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  border: 1px solid #000000 !important;
+  border-radius: 6px !important;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: var(--fmc-shadow-xs);
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.btn-black:hover {
+  background-color: #262626 !important;
+  border-color: #262626 !important;
+  color: #FFFFFF !important;
+  transform: translateY(-1px);
+}
+
+.btn-outline-box {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  border: 1px solid var(--fmc-border) !important;
+  border-radius: 6px !important;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.btn-outline-box:hover {
+  background-color: #F5F5F5 !important;
+  border-color: #D4D4D4 !important;
+  color: #000000 !important;
 }
 
 /* Hero Section */
@@ -68,10 +139,10 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.35rem 0.9rem;
+  padding: 0.35rem 0.75rem;
   background-color: var(--fmc-bg);
   border: 1px solid var(--fmc-border);
-  border-radius: 6px;
+  border-radius: 4px;
   font-size: 0.825rem;
   font-weight: 500;
   color: var(--fmc-secondary-text);
@@ -81,7 +152,7 @@ body {
 .stat-card {
   background: var(--fmc-card-bg);
   border: 1px solid var(--fmc-border);
-  border-radius: var(--fmc-radius);
+  border-radius: 8px;
   padding: 1.25rem;
   box-shadow: var(--fmc-shadow-xs);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -94,22 +165,37 @@ body {
 }
 
 .stat-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.25rem;
+  background-color: #F5F5F5;
+  color: #000000;
+  border: 1px solid var(--fmc-border);
 }
 
-/* Category Pill Badges */
-.category-btn {
+/* ========================================================================= */
+/* PURE CSS CATEGORY FILTERING (ZERO JS RADIO HACK)                          */
+/* ========================================================================= */
+.category-radio {
+  display: none;
+}
+
+.category-labels-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cat-label-btn {
   border: 1px solid var(--fmc-border);
   background-color: #FFFFFF;
   color: var(--fmc-secondary-text);
   border-radius: 6px;
-  padding: 0.4rem 1rem;
+  padding: 0.4rem 0.9rem;
   font-size: 0.85rem;
   font-weight: 500;
   transition: all 0.15s ease;
@@ -117,25 +203,39 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+  user-select: none;
 }
 
-.category-btn:hover {
+.cat-label-btn:hover {
   background-color: #F5F5F5;
   color: #000000;
   border-color: #D4D4D4;
 }
 
-.category-btn.active {
-  background-color: #000000;
-  color: #FFFFFF;
-  border-color: #000000;
+/* Radio Checked Active States */
+#cat-all:checked ~ * .cat-label-all,
+#cat-roads:checked ~ * .cat-label-roads,
+#cat-lighting:checked ~ * .cat-label-lighting,
+#cat-waste:checked ~ * .cat-label-waste,
+#cat-water:checked ~ * .cat-label-water {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  border-color: #000000 !important;
+}
+
+/* Hide/Show Cards based on Selected Radio */
+#cat-roads:checked ~ .feed-cards-container .feed-card:not(.card-roads),
+#cat-lighting:checked ~ .feed-cards-container .feed-card:not(.card-lighting),
+#cat-waste:checked ~ .feed-cards-container .feed-card:not(.card-waste),
+#cat-water:checked ~ .feed-cards-container .feed-card:not(.card-water) {
+  display: none !important;
 }
 
 /* Complaint Feed Card */
-.issue-card {
+.feed-card {
   background: var(--fmc-card-bg);
   border: 1px solid var(--fmc-border);
-  border-radius: var(--fmc-radius);
+  border-radius: 8px;
   overflow: hidden;
   box-shadow: var(--fmc-shadow-xs);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -144,7 +244,7 @@ body {
   height: 100%;
 }
 
-.issue-card:hover {
+.feed-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--fmc-shadow-md);
   border-color: #A3A3A3;
@@ -160,7 +260,7 @@ body {
 .status-badge {
   font-size: 0.72rem;
   font-weight: 600;
-  padding: 0.3rem 0.65rem;
+  padding: 0.25rem 0.6rem;
   border-radius: 4px;
   display: inline-flex;
   align-items: center;
@@ -206,8 +306,14 @@ body {
   background-color: var(--fmc-status-resolved);
 }
 
-/* Upvote Button */
-.btn-upvote {
+/* ========================================================================= */
+/* PURE CSS INTERACTIVE UPVOTE BUTTON (ZERO JS CHECKBOX HACK)                */
+/* ========================================================================= */
+.upvote-toggle-input {
+  display: none;
+}
+
+.upvote-box {
   background-color: #FFFFFF;
   color: var(--fmc-dark);
   border: 1px solid var(--fmc-border);
@@ -218,37 +324,151 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+  cursor: pointer;
+  user-select: none;
   transition: all 0.15s ease;
 }
 
-.btn-upvote:hover, .btn-upvote.voted {
+.upvote-box:hover {
+  background-color: #F5F5F5;
+  border-color: #D4D4D4;
+}
+
+.upvote-toggle-input:checked + .upvote-box {
   background-color: #000000;
   color: #FFFFFF;
   border-color: #000000;
 }
 
-/* Map Container */
-#mapContainer {
-  height: 520px;
-  width: 100%;
-  border-radius: var(--fmc-radius);
-  border: 1px solid var(--fmc-border);
-  box-shadow: var(--fmc-shadow-sm);
-  z-index: 10;
+.upvote-toggle-input:checked + .upvote-box i {
+  color: #FFFFFF;
 }
 
-/* Status Tracker Stepper */
+/* Department Badge */
+.dept-pill {
+  font-size: 0.725rem;
+  font-weight: 500;
+  background-color: #F5F5F5;
+  color: #404040;
+  border: 1px solid var(--fmc-border);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* ========================================================================= */
+/* PURE CSS MODALS (:target BASED - ZERO JAVASCRIPT)                         */
+/* ========================================================================= */
+.css-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.css-modal:target {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.css-modal-overlay {
+  position: absolute;
+  inset: 0;
+  cursor: default;
+}
+
+.css-modal-box {
+  position: relative;
+  z-index: 10;
+  background: #FFFFFF;
+  border: 1px solid var(--fmc-border);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 620px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transform: translateY(-15px);
+  transition: transform 0.2s ease;
+}
+
+.css-modal:target .css-modal-box {
+  transform: translateY(0);
+}
+
+.css-modal-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--fmc-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.css-modal-body {
+  padding: 1.5rem;
+}
+
+.css-modal-close {
+  color: #737373;
+  font-size: 1.4rem;
+  line-height: 1;
+  padding: 0.2rem;
+  transition: color 0.15s ease;
+}
+
+.css-modal-close:hover {
+  color: #000000;
+}
+
+/* Floating Action Button */
+.floating-report-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 1050;
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  border: 1px solid #000000 !important;
+  border-radius: 6px !important;
+  padding: 0.65rem 1.25rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease;
+}
+
+.floating-report-btn:hover {
+  background-color: #262626 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  color: #FFFFFF !important;
+}
+
+/* Timeline Stepper for Tracking */
 .tracking-stepper {
   position: relative;
   display: flex;
   justify-content: space-between;
-  margin: 2.5rem 0 1.5rem;
+  margin: 2rem 0 1.5rem;
 }
 
 .tracking-stepper::before {
   content: '';
   position: absolute;
-  top: 20px;
+  top: 18px;
   left: 30px;
   right: 30px;
   height: 2px;
@@ -264,18 +484,18 @@ body {
 }
 
 .step-circle {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
   background-color: #FFFFFF;
   border: 2px solid var(--fmc-border);
   color: var(--fmc-muted);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
-  margin: 0 auto 0.6rem;
-  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  margin: 0 auto 0.5rem;
+  font-weight: 600;
 }
 
 .step-item.completed .step-circle {
@@ -292,63 +512,17 @@ body {
 }
 
 .step-title {
-  font-size: 0.85rem;
+  font-size: 0.825rem;
   font-weight: 600;
   color: var(--fmc-dark);
 }
 
 .step-time {
-  font-size: 0.75rem;
+  font-size: 0.725rem;
   color: var(--fmc-muted);
 }
 
-/* Department Badge */
-.dept-pill {
-  font-size: 0.725rem;
-  font-weight: 500;
-  background-color: #F5F5F5;
-  color: #404040;
-  border: 1px solid var(--fmc-border);
-  padding: 0.25rem 0.65rem;
-  border-radius: 4px;
-  display: inline-block;
-}
-
-/* Category Grid on Form Modal */
-.category-select-card {
-  border: 1px solid var(--fmc-border);
-  border-radius: var(--fmc-radius-sm);
-  padding: 1rem;
-  cursor: pointer;
-  text-align: center;
-  background-color: #FFFFFF;
-  transition: all 0.15s ease;
-}
-
-.category-select-card:hover {
-  border-color: #A3A3A3;
-  background-color: #FAFAFA;
-}
-
-.category-select-card.selected {
-  border-color: #000000;
-  background-color: #000000;
-  color: #FFFFFF;
-}
-
-.category-select-card.selected i,
-.category-select-card.selected span {
-  color: #FFFFFF !important;
-}
-
-.category-select-card i {
-  font-size: 1.5rem;
-  color: #171717;
-  margin-bottom: 0.35rem;
-  display: block;
-}
-
-/* Resolution Comparison (Before vs After) */
+/* Comparison Container (Before vs After) */
 .comparison-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -357,14 +531,14 @@ body {
 
 .comparison-box {
   position: relative;
-  border-radius: var(--fmc-radius-sm);
+  border-radius: 6px;
   overflow: hidden;
   border: 1px solid var(--fmc-border);
 }
 
 .comparison-box img {
   width: 100%;
-  height: 180px;
+  height: 170px;
   object-fit: cover;
 }
 
@@ -372,8 +546,8 @@ body {
   position: absolute;
   top: 8px;
   left: 8px;
-  padding: 0.2rem 0.6rem;
-  font-size: 0.7rem;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.65rem;
   font-weight: 600;
   text-transform: uppercase;
   border-radius: 4px;
@@ -381,14 +555,57 @@ body {
 }
 
 .comparison-label.before {
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .comparison-label.after {
   background: rgba(22, 163, 74, 0.9);
 }
 
-/* Responsive tweaks */
+/* Form Styling in CSS Modal */
+.form-input-box {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--fmc-border);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.form-input-box:focus {
+  border-color: #000000;
+}
+
+/* Category Grid on Modal */
+.category-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.category-choice-label {
+  border: 1px solid var(--fmc-border);
+  border-radius: 6px;
+  padding: 0.75rem;
+  text-align: center;
+  cursor: pointer;
+  display: block;
+  transition: all 0.15s ease;
+}
+
+.category-choice-label:hover {
+  background-color: #F5F5F5;
+  border-color: #A3A3A3;
+}
+
+.category-choice-input:checked + .category-choice-label {
+  background-color: #000000;
+  color: #FFFFFF;
+  border-color: #000000;
+}
+
 @media (max-width: 768px) {
   .tracking-stepper::before {
     display: none;
