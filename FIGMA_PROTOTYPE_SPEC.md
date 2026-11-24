@@ -2,108 +2,82 @@
 
 ---
 
-## 1. Design System & Style Tokens
+## 1. Minimalist Monochrome Design System (Option 4)
 
-### 1.1 Color Palette
+### 1.1 Color Tokens
 | Token Name | Hex Code | Usage | Figma Variable Name |
 | :--- | :--- | :--- | :--- |
-| **Civic Primary (Emerald)** | `#0D9488` / `#0F766E` | Main branding, primary CTAs, active navigation | `color/primary/default` |
-| **Civic Navy (Slate Dark)** | `#0F172A` | Primary text, navbar headers, dark surfaces | `color/surface/navy-dark` |
-| **Accent Orange** | `#F97316` | Urgent tags, pending alerts, callouts | `color/accent/warning` |
-| **Status: Open / Reported** | `#E11D48` | Critical badge, newly registered complaint | `color/status/open` |
-| **Status: In Progress** | `#D97706` | Municipal crew assigned / work underway | `color/status/in-progress` |
-| **Status: Resolved** | `#16A34A` | Successfully fixed and verified | `color/status/resolved` |
-| **Neutral Light** | `#F8FAFC` | Main app background canvas | `color/surface/background` |
-| **Border & Divider** | `#E2E8F0` | Card borders, dividers, form outlines | `color/border/subtle` |
+| **Monochrome Primary** | `#000000` | Main buttons, brand headers, active filter boxes | `color/primary/black` |
+| **Monochrome Hover** | `#262626` | Button hover state, interactive highlights | `color/primary/hover` |
+| **Canvas Background** | `#FAFAFA` | Neutral page background | `color/surface/background` |
+| **Card Surface** | `#FFFFFF` | Clean white card surfaces | `color/surface/card` |
+| **Hairline Border** | `#E5E5E5` | Sharp 1px borders, dividing rules, inputs | `color/border/subtle` |
+| **Text Primary** | `#000000` | Display headers, titles, primary text | `color/text/primary` |
+| **Text Secondary** | `#525252` | Body descriptions, subheaders | `color/text/secondary` |
+| **Text Muted** | `#737373` | Timestamps, SLA captions, metadata | `color/text/muted` |
+| **Status: Open** | `#DC2626` / `#FEF2F2` | Open / Triage indicator dot & soft badge | `color/status/open` |
+| **Status: In Progress**| `#D97706` / `#FFFBEB` | Crew active indicator dot & soft badge | `color/status/in-progress` |
+| **Status: Resolved** | `#16A34A` / `#F0FDF4` | Verified fixed indicator dot & soft badge | `color/status/resolved` |
 
-### 1.2 Typography Hierarchy (Inter / System Sans)
-* **Display H1**: `32px / 40px Line-height`, Bold (700) — Hero header
-* **Section H2**: `24px / 32px Line-height`, SemiBold (600) — Section headings, modal titles
-* **Card Title H3**: `18px / 26px Line-height`, SemiBold (600) — Issue cards, metric headers
-* **Body Regular**: `14px / 20px Line-height`, Regular (400) — Descriptions, instructions
-* **Metadata / Caption**: `12px / 16px Line-height`, Medium (500) — Timestamps, badges, IDs
+### 1.2 Corner Radius & Elevation (Sharp Boxes, No Pills)
+* **Buttons & Action Boxes**: `border-radius: 6px` (sharp modern box, zero oval pills).
+* **Badges & Tags**: `border-radius: 4px` (compact rectangular status boxes).
+* **Cards & Containers**: `border-radius: 8px` (clean rectangular container).
+* **Elevation**: Subtle 1px shadow `0 1px 2px rgba(0, 0, 0, 0.05)`, no muddy or colored drop shadows.
 
-### 1.3 Grid & Elevation
-* **Desktop Canvas**: `1440px` width, 12-column grid, `80px` margin, `24px` gutter.
-* **Mobile Canvas**: `390px` width (iPhone 14/15/16 standard), 4-column grid, `16px` margin, `16px` gutter.
-* **Elevation 1 (Cards)**: `0 2px 4px rgba(15, 23, 42, 0.06)`
-* **Elevation 2 (Modals / Overlays)**: `0 12px 24px rgba(15, 23, 42, 0.12)`
+### 1.3 Typography Hierarchy (Inter / SF Pro Display)
+* **Display H1**: `32px / 40px`, Bold (700), Letter-spacing `-0.02em` — Hero headline.
+* **Section H2**: `22px / 28px`, Bold (700), Letter-spacing `-0.015em` — Section titles.
+* **Card Title H3**: `16px / 22px`, SemiBold (600) — Complaint card headers.
+* **Body Regular**: `13px / 18px`, Regular (400) — Descriptions, addresses.
+* **Code / IDs**: `12px / 16px`, JetBrains Mono Medium (500) — `#FMC-101`, `#FMC-102`.
 
 ---
 
 ## 2. Screen-by-Screen UI/UX Architecture
 
-### Frame 1: Citizen Landing & Hero (Desktop & Mobile)
+### Frame 1: Citizen Landing & Real Feed
 * **Header / Navigation Bar**:
-  * Logo: "Fix My City" with green geo-pin icon.
-  * Nav links: *Report Issue*, *Explore Feed*, *Track Status*, *Departments*, *Admin Portal*.
-  * Primary Button CTA: `+ Report an Issue`.
+  * Logo: "FixMyCity" in bold black with compact 6px square geo-badge.
+  * Sub-badge: "RBU Campus, Nagpur".
+  * Primary Action: `+ Report a Problem` box button.
 * **Hero Banner**:
-  * Punchy title: *"Spotted an issue in your neighborhood? Let's get it fixed."*
-  * Quick metric counters: `14,890+ Issues Resolved`, `94% Municipal Response Rate`, `48h Avg. Resolution`.
-  * Search & Category quick-pills (Potholes, Streetlights, Garbage, Water Leak, Traffic).
+  * Title: *"Spotted a problem in your city? Report it. Track it. Get it fixed."*
+  * Quick metric boxes: `4 Total Reports`, `1 Resolved (25%)`, `2 In Progress`, `1 Open / Triage`.
+* **Category Filter Toolbar (Box Buttons)**:
+  * Rectangular box buttons: `All (4)`, `Roads & Potholes (1)`, `Street Lighting (1)`, `Waste (1)`, `Water & Drainage (1)`.
+* **Feed Grid**: Exactly 4 authentic verified complaints at Ramdeobaba University, Katol Road, Nagpur.
 
-### Frame 2: "Report an Issue" 4-Step Interactive Modal / Flow
-* **Step 1: Category Selection**:
-  * Grid of 6 interactive icon cards (Roads & Potholes, Waste & Sanitation, Street Lights & Power, Water Supply & Drainage, Parks & Trees, Traffic & Signage).
-* **Step 2: Issue Details & Evidence**:
-  * Input fields: Title, description, severity selector (`Low`, `Medium`, `High`, `Emergency`).
-  * Image upload box with drag-and-drop & live photo thumbnail preview.
-* **Step 3: Geolocation & Pin**:
-  * GPS "Use Current Location" auto-fill button.
-  * Address text input + interactive map pin placement with landmark note.
-* **Step 4: Submission Confirmation**:
-  * Success illustration, assigned Ticket Tracking Code (e.g. `#FMC-8942`), Estimated Response SLA, and "Share with Neighbors" button.
+### Frame 2: "Report an Issue" Submission Modal
+* **Category Selector**: 4-box grid (Roads, Lighting, Waste, Water).
+* **Inputs**: Title, incident address (Nagpur campus pre-filled), description textarea.
+* **Submission Action**: Solid jet-black button routing to Confirmation Screen (`#FMC-105` generated).
 
-### Frame 3: Civic Issues Feed & Interactive Geospatial Map
-* **Toggle Bar**: Switch between **Map View** (Leaflet/Mapbox clusters) and **List / Card View**.
-* **Filter Bar**: Filter by Status (`All`, `Reported`, `Under Investigation`, `In Progress`, `Resolved`), Category, and Ward/Zone.
-* **Issue Card Component**:
-  * Category badge + Status badge (color-coded).
-  * Photo thumbnail + title + address + reported time (e.g., *"2 hours ago"*).
-  * Community Upvote / "Me Too" count (shows public urgency).
-  * "Track Progress" quick link.
+### Frame 3: Geospatial Incident Grid
+* OpenStreetMap satellite view centered on **Shri Ramdeobaba University, Katol Road, Nagpur (21.1764° N, 79.0617° E)**.
+* Floating GPS coordinate overlay mapping all 4 active incidents.
 
-### Frame 4: Complaint Tracker & Live Lifecycle Timeline
-* **Search / Lookup Bar**: Enter Ticket ID (e.g. `#FMC-1042`).
-* **Visual Stepper Timeline (Vertical / Horizontal)**:
-  1. `Reported`: Timestamp, citizen evidence.
-  2. `Reviewed & Verified`: Municipal desk validation, priority assigned.
-  3. `Crew Dispatched`: Assigned department (e.g., *Public Works Division 4*), crew lead name.
-  4. `Resolved & Closed`: Resolution proof photo (Before & After), completion timestamp, citizen feedback rating.
+### Frame 4: Ticket Lifecycle Tracker & Verification Audit
+* 4-Stage Visual Progress Stepper: `1. Registered` -> `2. Verified` -> `3. Crew Dispatched` -> `4. Resolved`.
+* Side-by-side photographic verification audit for `#FMC-103` (`garbage.jpg` vs `street_cleaned.jpg`).
 
-### Frame 5: Public Services & Municipal Officer Dashboard (Admin)
-* **Top Metric Ribbon**: Total Active Tickets, SLA Breaches, Resolved Today, Citizen Satisfaction Index.
-* **Triage & Operations Board**:
-  * Quick status updater dropdown (`Under Review` -> `Assigned` -> `In Progress` -> `Resolved`).
-  * Filter tickets by municipal department (*Department of Transportation*, *Solid Waste Management*, *Water Works*, *Electricity Board*).
-  * Resolution Action Modal: Upload "Fixed" verification image, enter resolution remarks, mark complete.
+### Frame 5: Municipal Operations Command Center
+* Administrative table with columns: `Ticket #`, `Category`, `Incident Title & Location`, `Department`, `Status`, `Action`.
 
 ---
 
-## 3. Figma Prototyping Connections & Interaction Flow
+## 3. Figma Prototyping Interaction Flow
 
 ```mermaid
 flowchart TD
-    A[Citizen Landing Screen] -->|Click '+ Report Issue'| B[Report Issue Modal: Step 1 Category]
-    B -->|Select Category| C[Step 2: Details & Photo Upload]
-    C -->|Click 'Next: Location'| D[Step 3: Geolocation & Pin]
-    D -->|Click 'Submit Complaint'| E[Step 4: Ticket Generated Modal]
+    A[Citizen Landing Screen] -->|Click '+ Report a Problem'| B[Report Issue Modal Box]
+    B -->|Submit Form| C[Ticket #FMC-105 Generated Screen]
     
-    A -->|Click 'Explore Complaints'| F[Civic Map & Feed Screen]
-    F -->|Click Any Issue Card| G[Issue Details & Upvote Modal]
+    A -->|Click Category Box: Roads / Lights / Waste| D[Pure CSS Filtered Feed View]
+    A -->|Click 'Details' on Card| E[Incident Inspection Modal]
     
-    A -->|Click 'Track Status'| H[Ticket Lifecycle Tracker]
-    H -->|Input Ticket ID| I[Dynamic Step-by-Step Resolution Timeline]
+    A -->|Click 'Track ->'| F[4-Stage Lifecycle Stepper Screen]
+    F -->|View Resolved Ticket #FMC-103| G[Before vs After Photographic Audit]
     
-    A -->|Click 'Public Services Portal'| J[Municipal Admin Dashboard]
-    J -->|Filter by Department| K[Department Work Queue]
-    K -->|Click 'Resolve Ticket'| L[Upload Proof & Close Ticket]
-    L -->|Auto Updates| I
+    A -->|Navigate to Operations| H[Municipal Admin Dispatch Table]
 ```
-
-### Prototyping Settings in Figma:
-* **Modal opens**: Trigger `On Click` -> Action `Open Overlay` -> Position `Center` -> Animation `Fade in` (200ms `Ease-out`).
-* **Category selection**: Trigger `On Click` -> Action `Set Variable / Change To` (Active stroke highlight `#0D9488`).
-* **Before / After Image Slider**: Trigger `On Drag` -> Action `Smart Animate` between Before and After frames.
-* **Tab Switcher (Map vs List)**: Trigger `On Click` -> Action `Navigate To` (Instant or `Dissolve` 150ms).
