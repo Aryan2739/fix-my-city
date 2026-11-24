@@ -1,7 +1,6 @@
 # 🏛️ Fix My City
 
-> **Civic Grievance Redressal & Municipal Operations Platform**  
-> *Engineered specifically for Shri Ramdeobaba University (RBU) Campus & Katol Road, Nagpur (`21.1764° N, 79.0617° E`).*
+ A modern civic technology portal designed to bridge residents with municipal authorities (Nagpur Municipal Corporation). It provides transparent reporting, tracking, and field crew verification for physical civic infrastructure issues.
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-black?style=flat&logo=github)](https://aryan2739.github.io/fix-my-city/)
 [![Figma Prototype](https://img.shields.io/badge/Figma-Prototype%20Canvas-black?style=flat&logo=figma)](https://www.figma.com/design/RB6XpSiJ4nMNFf2oTlz0Mi)
@@ -18,9 +17,9 @@
 
 ---
 
-## 📌 Project Overview
 
-**Fix My City** is a modern civic technology portal designed to bridge university students, faculty, and residents with municipal authorities (Nagpur Municipal Corporation). It provides transparent reporting, tracking, and field crew verification for physical civic infrastructure issues.
+
+
 
 ### ⚡ Architectural Philosophy: 100% Pure HTML5 + CSS3
 This project is built with **zero runtime JavaScript**. All interactive capabilities are powered by modern CSS3 structural techniques:
@@ -66,8 +65,4 @@ Because this project requires no build tools, compilers, or server backends:
 
 ---
 
-## 👨‍💻 Author & Academic Information
 
-- **Author**: Aryan Gupta (CSE 1st Year)
-- **Institution**: Shri Ramdeobaba University (RBU), Nagpur
-- **Design System**: 8-Point Minimalist Monochrome Box Architecture
